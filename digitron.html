@@ -1,38 +1,46 @@
 <!DOCTYPE html>
+   <html>
+      <head>
+         <link rel="stylesheet" type="text/css" href="stil.css">
+      </head>
 
-<html>
+      <body>
+        <div class='allNumbers'>
+           <input type='text' size='15' id='screen'>
+           <br/>
+           <br/>
+           <button class="number">1</button>
+           <button class="number">2</button>
+           <button class="number">3</button>
+           <button class="operation">-</button>
+           <br/>
+           <br/>
+           <button class="number">4</button>
+           <button class="number">5</button>
+           <button class="number">6</button>
+           <button class="operation">+</button>
+           <br/>
+           <br/>
+           <button class="number">7</button>
+           <button class="number">8</button>
+           <button class="number">9</button>
+           <button class="operation">x</button>
+           <br/>
+           <br/>
+           <button id="delete">C</button>
+           <button class="number">0</button>
+           <button id="equality">=</button>
+           <button class="operation">/</button>
+           <br/>
+           <br/>
+           <button id="oneDelete">AC</button>
+           <button id="coma">.</button>
+           <button id="Squareroot">√</button>
+           <button id="Square">x²</button>
+           <button id="Percent">%</button>
+        </div>
+      </body>
 
-<head>
-    
-<link rel="stylesheet" type="text/css" href="stil.css">
-<script type="text/javascript" src="racunaljka.js"> </script>
-
-</head>
-
-<body>
-    
-<form> 
-    
-<input type='text' size='15' id='izvestaj' > <br/><br/>
-<input type="button" value='1' onclick='brojJedan(); return seeAll()'> <input type="button" value="2" onclick="brojDva(); return seeAll()">
-<input type="button" value='3' onclick="brojTri();return seeAll()"> <input type="button" value='-' onclick="minus(); return seeAll()"> <br/><br/> 
-<input type="button" value='4' onclick="brojCetiri(); return seeAll()"> <input type="button" value='5' onclick="brojPet(); return seeAll()">  
-<input type="button" value='6' onclick="brojSest(); return seeAll()"> <input type="button" value="+" onclick="plus(); return seeAll()">  <br/><br/>  
-<input type="button" value='7' onclick="brojSedam(); return seeAll()"> <input type="button" value='8' onclick="brojOsam(); return seeAll()"> 
-<input type="button" value='9' onclick="brojDevet(); return seeAll()"> <input type="button" value="x" onclick="puta(); return seeAll()">   <br/><br/>    
-<input type="button" value="C" onclick="return brisanje()"> <input type="button" value='0' onclick="brojNula(); return seeAll() ">     
-<input type="button" value="=" onclick="jednako(); return seeAll()"> <input type="button" value="/" onclick="podeljeno(); return seeAll()"> <br/><br/>     
-<input type="button" value="<x" id ='jednobrisanje' onclick="jednoBrisanje(); return seeAll()">
-<input type="button" value=" . " id ='Coma' onclick="coma(); return seeAll()">  
-<input type="button" value="√" id ='Squareroot' onclick="squareRoot(); return seeAll()">    
-<input type="button" value="x²" id ='Square' onclick="square(); return seeAll()">     
-<input type="button" value="%" id ='Percent' onclick="percent(); return seeAll()">  
-    
-</form>
-
-   
-
-
-</body>
- 
-</html>
+     <script type="text/javascript" src="racunaljka.js ">
+     </script>
+   </html>
