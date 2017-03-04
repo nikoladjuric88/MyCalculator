@@ -1,10 +1,7 @@
-/*=================================== brojevi==================================================*/
-
 var writes = document.getElementById('screen');
 
 var addNumbers = document.querySelector('.allNumbers');
 var addEveryNumber = addNumbers.querySelectorAll('.number');
-
 
 for (var i = 0; i <= addEveryNumber.length - 1; i++) {
 
@@ -18,20 +15,17 @@ for (var i = 0; i <= addEveryNumber.length - 1; i++) {
         writes.focus();
     }
 };
-
-/*=================================== brojevi==================================================*/
-/*=================================== operacije================================================*/
-
+/*======================================================================================================================*/
 var addOperations = addNumbers.querySelectorAll('.operation');
 
 for (var i = 0; i <= addOperations.length - 1; i++) {
 
     addOperations[i].onclick = function() {
 
-        if (!isNaN(writes.value)) {
+        if (!isNaN(writes.value) || writes.value === ".") {
             writes.value += this.innerHTML;
         }
-        if (writes.value[0] === '-' || writes.value[0] === '+' || writes.value[0] === 'x' || writes.value[0] === '/') {
+        if (writes.value[0] === '+' || writes.value[0] === 'x' || writes.value[0] === '/') {
             writes.value = "";
         }
         writes.focus();
@@ -43,31 +37,39 @@ var btnEquality = document.getElementById("equality");
 btnEquality.onclick = function() {
 
     var textLength = writes.value.length;
+
     for (var i = 0; i < textLength; i++) {
-        if (writes.value[i] === '-') {
-            writes.value1 = writes.value.substring(0, writes.value.indexOf('-'));
-            writes.value2 = writes.value.substring(writes.value.indexOf('-') + 1);
+
+        var first = writes.value.indexOf("-");
+        var second = writes.value.indexOf("-", 1);
+
+        if (writes.value[first] === '-' && writes.value[second] === '-') {
+            writes.value1 = writes.value.substring(0, second);
+            writes.value2 = writes.value.substring(second + 1);
             writes.value = writes.value1 - writes.value2;
-        } else if (writes.value[i] === '+') {
+        }
+
+        if (writes.value[i] === '+') {
             writes.value1 = writes.value.substring(0, writes.value.indexOf('+'));
             writes.value2 = writes.value.substring(writes.value.indexOf('+') + 1);
-            writes.value = Number(writes.value1) + Number(writes.value2);
-        } else if (writes.value[i] === 'x') {
+            writes.value = Number(writes.value1) + Number(writes.value2);;
+        }
+        if (writes.value[i] === 'x') {
             writes.value1 = writes.value.substring(0, writes.value.indexOf('x'));
             writes.value2 = writes.value.substring(writes.value.indexOf('x') + 1);
             writes.value = writes.value1 * writes.value2;
-        } else if (writes.value[i] === '/') {
+        }
+
+        if (writes.value[i] === '/') {
             writes.value1 = writes.value.substring(0, writes.value.indexOf('/'));
             writes.value2 = writes.value.substring(writes.value.indexOf('/') + 1);
             writes.value = writes.value1 / writes.value2;
         }
     }
+
     writes.focus();
 };
-
-/*=================================== operacije================================================*/
-/*=================================== ostalo================================================*/
-
+/*===================================================================================================================================*/
 var btnDelete = document.getElementById("delete");
 
 btnDelete.onclick = function() {
@@ -84,16 +86,11 @@ btnOneDelete.onclick = function() {
 var btnComa = document.getElementById("coma");
 
 btnComa.onclick = function() {
-    var textLength = writes.value.length;
-    writes.value += '.';
-    for (var i = 0; i < textLength; i++) {
-        if (writes.value[i] === '.') {
-            writes.value = writes.value.substring(0, writes.value.length - 1);
-        }
-        if (writes.value[i] === '-' || writes.value[i] === '+' || writes.value[i] === 'x' || writes.value[i] === '/') {
-            writes.value += '.';
 
-        }
+    var textLength = writes.value.length;
+
+    if (!isNaN(writes.value[textLength - 1])) {
+        writes.value += '.';
     }
     writes.focus();
 };
