@@ -21,20 +21,72 @@ for (var i = 0; i <= numberButtons.length - 1; i++) {
 var operationButtons = buttons.querySelectorAll('.operation');
 
 for (var i = 0; i <= operationButtons.length - 1; i++) {
-
+    var action = 1;
     operationButtons[i].onclick = function() {
 
         var operation = this.innerHTML;
 
+        if (operation === '-') {
+
+            if (action === 1) {
+                result = currNumber;
+                currNumber = 0;
+                writes.value = result;
+                action = 2;
+
+            } else {
+
+                result = result - currNumber;
+                currNumber = 0;
+                writes.value = result;
+
+            }
+        }
+
         if (operation === '+') {
 
-            result += currNumber;
+            if (action === 1) {
+                result = currNumber;
+                currNumber = 0;
+                writes.value = result;
+                action = 2;
+            } else {
+                result = result + currNumber;
+                currNumber = 0;
+                writes.value = result;
+            }
 
-            currNumber = 0;
-
-            writes.value = result;
         }
 
-        }
- }
+         if (operation === 'x') {
 
+            if (action === 1) {
+                result = currNumber;
+                currNumber = 0;
+                writes.value = result;
+                action = 2;
+            } else {
+                result = result * currNumber;
+                currNumber = 0;
+                writes.value = result;
+            }
+
+        }
+
+          if (operation === '/') {
+
+            if (action === 1) {
+                result = currNumber;
+                currNumber = 0;
+                writes.value = result;
+                action = 2;
+            } else {
+                result = result / currNumber;
+                currNumber = 0;
+                writes.value = result;
+            }
+
+        }
+
+    }
+}
