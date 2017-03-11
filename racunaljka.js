@@ -36,7 +36,7 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
                 result = result * currNumber;
                 writes.value = result;
                 currNumber = 0;
-                action = 6;
+                action = 3;
                 prevOperation = 'addition';
             }
              if (prevOperation === 'addition') {
@@ -50,7 +50,7 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
                 result = result - currNumber;
                 writes.value = result;
                 currNumber = 0;
-                action = 2;
+                action = 4;
                 prevOperation = 'addition'
             }
   
@@ -58,7 +58,7 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
                 result = result / currNumber;
                 writes.value = result;
                 currNumber = 0;
-                action = 7;
+                action = 5;
                 prevOperation = 'addition'
             }
 
@@ -79,7 +79,7 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
                 result = result * currNumber;
                 writes.value = result;
                 currNumber = 0;
-                action = 5;
+                action = 3;
                 prevOperation = 'subtraction'
             }
 
@@ -94,7 +94,7 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
                 result = result + currNumber;
                 writes.value = result;
                 currNumber = 0;
-                action = 2;
+                action = 4;
                 prevOperation = 'subtraction'
             }
 
@@ -102,7 +102,7 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
                 result = result / currNumber;
                 writes.value = result;
                 currNumber = 0;
-                action = 7;
+                action = 5;
                 prevOperation = 'subtraction'
             }
 
@@ -125,7 +125,7 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
                 result = result + currNumber;
                 writes.value = result;
                 currNumber = 1;
-                action = 2;
+                action = 3;
                 prevOperation = 'multiplication'
             }
 
@@ -140,7 +140,7 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
                 result = result - currNumber;
                 writes.value = result;
                 currNumber = 0;
-                action = 3;
+                action = 4;
                 prevOperation = 'multiplication'
 
             }
@@ -149,7 +149,7 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
                 result = result / currNumber;
                 writes.value = result;
                 currNumber = 0;
-                action = 7;
+                action = 5;
                 prevOperation = 'multiplication'
             }
             
@@ -157,7 +157,7 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
                 result = currNumber;
                 writes.value = result;
                 currNumber = 0;
-                action = 4;
+                action = 2;
             }
 
              prevOperation = 'multiplication';
@@ -171,7 +171,7 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
                 result = result + currNumber;
                 writes.value = result;
                 currNumber = 1;
-                action = 7;
+                action = 3;
                 prevOperation = 'division'
             }
 
@@ -186,7 +186,7 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
                 result = result - currNumber;
                 currNumber = 0;
                 writes.value = result;
-                action = 8;
+                action = 4;
                 prevOperation = 'division'
                 
             }
@@ -195,7 +195,7 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
                 result = result * currNumber;
                 currNumber = 0;
                 writes.value = result;
-                action = 9;
+                action = 5;
                 prevOperation = 'division';
             }
 
@@ -203,7 +203,7 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
                 result = currNumber;
                 writes.value = result;
                 currNumber = 0;
-                action = 10;
+                action = 2;
                 prevOperation = 'division';
             }
 
