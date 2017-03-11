@@ -32,6 +32,13 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
         /*===================================================================*/
         if (operation === '+') {
 
+            if (action === 1) {
+                result = currNumber;
+                currNumber = 0;
+                writes.value = result;
+                action = 2;
+            }
+
               if (prevOperation === 'multiplication') {
                 result = result * currNumber;
                 writes.value = result;
@@ -39,14 +46,8 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
                 action = 3;
                 prevOperation = 'addition';
             }
-             if (prevOperation === 'addition') {
-                result = result + currNumber;
-                currNumber = 0;
-                writes.value = result;
-            }
 
             if (prevOperation === 'subtraction') {
-                action = 1;
                 result = result - currNumber;
                 writes.value = result;
                 currNumber = 0;
@@ -62,18 +63,23 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
                 prevOperation = 'addition'
             }
 
-            if (action === 1) {
-                action = 1;
-                result = currNumber;
+             if (prevOperation === 'addition') {
+                result = result + currNumber;
                 currNumber = 0;
                 writes.value = result;
-                action = 2;
             }
 
                  prevOperation = 'addition';
         }
         /*===================================================================*/
         if (operation === '-') {
+
+             if (action === 1) {
+                result = currNumber;
+                currNumber = 0;
+                writes.value = result;
+                action = 2;
+            }
 
             if (prevOperation === 'multiplication') {
                 result = result * currNumber;
@@ -83,14 +89,7 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
                 prevOperation = 'subtraction'
             }
 
-            if (prevOperation === 'subtraction') {
-                result = result - currNumber;
-                currNumber = 0;
-                writes.value = result;
-            }
-
             if (prevOperation === 'addition') {
-                action = 1;
                 result = result + currNumber;
                 writes.value = result;
                 currNumber = 0;
@@ -106,12 +105,10 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
                 prevOperation = 'subtraction'
             }
 
-            if (action === 1) {
-                action = 1;
-                result = currNumber;
+              if (prevOperation === 'subtraction') {
+                result = result - currNumber;
                 currNumber = 0;
                 writes.value = result;
-                action = 2;
             }
 
             prevOperation = 'subtraction';
@@ -120,8 +117,14 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
 
         if (operation === 'x') {
 
+            if (action === 1) {
+                result = currNumber;
+                writes.value = result;
+                currNumber = 0;
+                action = 2;
+            }
+
             if (prevOperation === 'addition') {
-                action = 1;
                 result = result + currNumber;
                 writes.value = result;
                 currNumber = 1;
@@ -136,7 +139,6 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
             }
 
             if (prevOperation === 'subtraction') {
-                action = 1;
                 result = result - currNumber;
                 writes.value = result;
                 currNumber = 0;
@@ -152,13 +154,6 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
                 action = 5;
                 prevOperation = 'multiplication'
             }
-            
-            if (action === 1) {
-                result = currNumber;
-                writes.value = result;
-                currNumber = 0;
-                action = 2;
-            }
 
              prevOperation = 'multiplication';
         }
@@ -167,7 +162,6 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
          if (operation === '/') {
 
             if (prevOperation === 'addition') {
-                action = 1;
                 result = result + currNumber;
                 writes.value = result;
                 currNumber = 1;
@@ -182,7 +176,6 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
             }
 
              if (prevOperation === 'subtraction') {
-                action = 1;
                 result = result - currNumber;
                 currNumber = 0;
                 writes.value = result;
