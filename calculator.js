@@ -1,3 +1,5 @@
+(function() {
+
 var writes = document.getElementById('screen');
 var currNumber = 0;
 var result = 0;
@@ -27,39 +29,32 @@ for (var i = 0; i <= operationButtons.length - 1; i++) {
 
         var operation = this.innerHTML;
 
- /*===================================================================*/
-        if (operation === this.innerHTML) {
-
-            if (isInitialAction) {
-                result = currNumber;
-                currNumber = 0;
-                writes.value = result;
-                isInitialAction = false;
-            }
-        else {
-
-                if (prevOperation === '+') {
-                    result = result + currNumber;
-                    currNumber = 0;
-                    writes.value = result;
-                }
-                if (prevOperation === '-') {
-                    result = result - currNumber;
-                    currNumber = 0;
-                    writes.value = result;
-                }
-                if (prevOperation === 'x') {
-                    result = result * currNumber;
-                    currNumber = 0;
-                    writes.value = result;
-                }
-                if (prevOperation === '/') {
-                    result = result / currNumber;
-                    currNumber = 0;
-                    writes.value = result;
-                }
-            }
-          prevOperation = this.innerHTML;
+        if (isInitialAction) {
+            result = currNumber;
+            isInitialAction = false;
         }
+        switch (prevOperation) {
+
+            case '+':
+                result = result + currNumber;
+                break;
+
+            case '-':
+                result = result - currNumber;
+                break;
+
+            case 'x':
+                result = result * currNumber;
+                break;
+
+            case '/':
+                result = result / currNumber;
+                break;
+        }
+        currNumber = 0;
+        writes.value = result;
+        prevOperation = this.innerHTML;
     }
 }
+
+})();
