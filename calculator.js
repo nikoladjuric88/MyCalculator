@@ -1,6 +1,5 @@
 (function() {
-
-    var inputField = document.getElementById('screen');
+     
     var currNumber = 0;
     var result = 0;
 
