@@ -1,6 +1,7 @@
 (function() {
-     
-    var currNumber = 0;
+
+    /*        i don't need a hint                            */
+    //var currNumber = 0;  problem
     var result = 0;
 
     var buttons = document.querySelector('.allButtons');
@@ -16,8 +17,10 @@
     }
 
     Screen.prototype.addDigit = function(digit) {
-        currNumber = currNumber * 10 + digit;
-        this.setNumber(currNumber);
+        var currValue = this._element.value;     //it has to be without parseInt(I realized) 
+        currValue = currValue * 10 + digit;
+        this.setNumber(currValue);
+
     }
 
     var screen = new Screen();
@@ -26,9 +29,9 @@
     for (var i = 0; i <= numberButtons.length - 1; i++) {
 
         numberButtons[i].onclick = function() {
-
             var buttonDigit = parseInt(this.innerHTML);
             screen.addDigit(buttonDigit);
+
         }
     };
 
@@ -40,7 +43,9 @@
         operationButtons[i].onclick = function() {
 
             if (isInitialAction) {
-                result = currNumber;
+                result = screen._element.value; // problem
+                console.log(screen.setNumber(number));
+                console.log(screen.setNumber(currValue));
                 isInitialAction = false;
             } else {
                 switch (prevOperation) {
