@@ -49,16 +49,14 @@
         var isInitialAction = true;
         var prevOperation;
         var currNumber;
+
         operationButtons[i].onclick = function() {
-
+            currNumber = screen.getNumber();
             if (isInitialAction) {
-
-                currNumber = screen.getNumber();
                 result = currNumber;
                 isInitialAction = false;
 
             } else {
-                currNumber = screen.getNumber();
 
                 switch (prevOperation) {
 
@@ -78,10 +76,9 @@
                         result = Number(result) / Number(currNumber);
                         break;
                 }
-                screen.setNumber(result);
             }
-
             screen.resetOnNextInput();
+            screen.setNumber(result); 
             prevOperation = this.innerHTML;
         }
     }
