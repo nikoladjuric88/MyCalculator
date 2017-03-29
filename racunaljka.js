@@ -1,131 +1,54 @@
-var writes = document.getElementById('screen');
+function Body(length) {
+    this.length = length;
+}
 
-var addNumbers = document.querySelector('.allNumbers');
-var addEveryNumber = addNumbers.querySelectorAll('.number');
+Body.prototype.growth = function(newLength) {
+    this.length += newLength;
+}
 
-for (var i = 0; i <= addEveryNumber.length - 1; i++) {
+function Head(left, right) {
+    this.left = left;
+    this.right = right;
+}
 
-    addEveryNumber[i].onclick = function() {
+Head.prototype.changeColor = function(color) {
+    this.left = color.left;
+    this.right = color.right;
+}
 
-        writes.value += this.innerHTML;
+function Tail(leftPosition, center, rightPosition) {
+    this.leftPosition = leftPosition;
+    this.center = center;
+    this.rightPosition = rightPosition;
+}
 
-        if (writes.value[0] === '0') {
-            writes.value = "";
-        }
-        writes.focus();
-    }
-};
-/*======================================================================================================================*/
-var addOperations = addNumbers.querySelectorAll('.operation');
+Tail.prototype.moving = function(move) {
+    this.leftPosition = move.rightPosition;
+    this.center = move.centar;
+    this.rightPosition = move.leftPosition;
+}
 
-for (var i = 0; i <= addOperations.length - 1; i++) {
+function Snake(kind) {
+    this.kind = kind;
+    this.length = new Body(3);
+    this.look = new Head('green', 'green');
+    this.move = new Tail(' ', 'center', ' ');
+}
 
-    addOperations[i].onclick = function() {
+Snake.prototype.eat = function(snakeFood) {
+    this.length.growth(snakeFood); 
+    var change = new Head('yellow', 'yellow');
+    this.look.changeColor(change);    
+}
 
-        if (!isNaN(writes.value) || writes.value === ".") {
-            writes.value += this.innerHTML;
-        }
-        if (writes.value[0] === '+' || writes.value[0] === 'x' || writes.value[0] === '/') {
-            writes.value = "";
-        }
-        writes.focus();
-    }
-};
+Snake.prototype.movement = function(moveLeft, center, moveRight) {
 
-var btnEquality = document.getElementById("equality");
+    var moveAgain = new Tail('moveLeft', 'center', 'moveRight');
+    this.move.moving(moveAgain);
+} 
 
-btnEquality.onclick = function() {
+var python = new Snake('python');
+python.eat(7);
+python.movement();
 
-    var textLength = writes.value.length;
-
-    for (var i = 0; i < textLength; i++) {
-
-        var first = writes.value.indexOf("-");
-        var second = writes.value.indexOf("-", 1);
-
-        if (writes.value[first] === '-' && writes.value[second] === '-') {
-            writes.value1 = writes.value.substring(0, second);
-            writes.value2 = writes.value.substring(second + 1);
-            writes.value = writes.value1 - writes.value2;
-        }
-
-        if (writes.value[i] === '+') {
-            writes.value1 = writes.value.substring(0, writes.value.indexOf('+'));
-            writes.value2 = writes.value.substring(writes.value.indexOf('+') + 1);
-            writes.value = Number(writes.value1) + Number(writes.value2);;
-        }
-        if (writes.value[i] === 'x') {
-            writes.value1 = writes.value.substring(0, writes.value.indexOf('x'));
-            writes.value2 = writes.value.substring(writes.value.indexOf('x') + 1);
-            writes.value = writes.value1 * writes.value2;
-        }
-
-        if (writes.value[i] === '/') {
-            writes.value1 = writes.value.substring(0, writes.value.indexOf('/'));
-            writes.value2 = writes.value.substring(writes.value.indexOf('/') + 1);
-            writes.value = writes.value1 / writes.value2;
-        }
-    }
-
-    writes.focus();
-};
-/*===================================================================================================================================*/
-var btnDelete = document.getElementById("delete");
-
-btnDelete.onclick = function() {
-    writes.value = '';
-};
-
-var btnOneDelete = document.getElementById("oneDelete");
-
-btnOneDelete.onclick = function() {
-    writes.value = writes.value.substring(0, writes.value.length - 1);
-    writes.focus();
-};
-
-var btnComa = document.getElementById("coma");
-
-btnComa.onclick = function() {
-
-    var textLength = writes.value.length;
-
-    if (!isNaN(writes.value[textLength - 1])) {
-        writes.value += '.';
-    }
-    writes.focus();
-};
-
-var btnSquareRoot = document.getElementById("Squareroot");
-
-btnSquareRoot.onclick = function() {
-
-    if (!isNaN(writes.value)) {
-        writes.value = Math.sqrt(writes.value);
-    }
-    writes.focus();
-};
-
-var btnSquare = document.getElementById("Square");
-
-btnSquare.onclick = function() {
-
-    if (!isNaN(writes.value)) {
-        writes.value = Math.pow(writes.value, 2);
-    }
-    writes.focus();
-};
-
-var btnPercent = document.getElementById("Percent");
-
-btnPercent.onclick = function() {
-
-    var textLength = writes.value.length;
-    for (var i = 0; i < textLength; i++) {
-        if (writes.value[i] === '/') {
-            writes.value1 = writes.value.substring(0, writes.value.indexOf('/'));
-            writes.value2 = writes.value.substring(writes.value.indexOf('/') + 1);
-            writes.value = writes.value1 / writes.value2 * 100;
-        }
-    }
-    writes.focus();
-};
+console.log(python);
