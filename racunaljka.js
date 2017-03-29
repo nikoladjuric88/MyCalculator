@@ -7,13 +7,13 @@ Body.prototype.growth = function(newLength) {
 }
 
 function Head(left, right) {
-    this.left = left;
-    this.right = right;
+    this.leftEye = left;
+    this.rightEye = right;
 }
 
 Head.prototype.changeColor = function(color) {
-    this.left = color.left;
-    this.right = color.right;
+    this.leftEye = color.leftEye;
+    this.rightEye = color.rightEye;
 }
 
 function Tail(leftPosition, center, rightPosition) {
