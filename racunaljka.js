@@ -11,7 +11,7 @@ function Head(left, right) {
     this.rightEye = right;
 }
 
-Head.prototype.changeingColor = function(colorLeft, colorRight) {
+Head.prototype.changeColor = function(colorLeft, colorRight) {
     this.leftEye = colorLeft;
     this.rightEye = colorRight;
 }
@@ -37,7 +37,7 @@ function Snake(kind) {
 
 Snake.prototype.eat = function(snakeFood) {
     this.body.grow(snakeFood);
-    this.head.changeingColor('yellow', 'yellow');
+    this.head.changeColor('yellow', 'yellow');
 }
 
 Snake.prototype.move = function() {
