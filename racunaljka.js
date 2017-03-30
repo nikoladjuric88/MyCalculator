@@ -2,7 +2,7 @@ function Body(length) {
     this.length = length;
 }
 
-Body.prototype.growth = function(newLength) {
+Body.prototype.grow = function(newLength) {
     this.length += newLength;
 }
 
@@ -11,9 +11,9 @@ function Head(left, right) {
     this.rightEye = right;
 }
 
-Head.prototype.changeColor = function(color) {
-    this.leftEye = color.leftEye;
-    this.rightEye = color.rightEye;
+Head.prototype.changeingColor = function(colorLeft, colorRight) {
+    this.leftEye = colorLeft;
+    this.rightEye = colorRight;
 }
 
 function Tail(leftPosition, center, rightPosition) {
@@ -22,33 +22,32 @@ function Tail(leftPosition, center, rightPosition) {
     this.rightPosition = rightPosition;
 }
 
-Tail.prototype.moving = function(move) {
-    this.leftPosition = move.rightPosition;
-    this.center = move.centar;
-    this.rightPosition = move.leftPosition;
+Tail.prototype.changePosition = function(moveLeft, center, moveRight) {
+    this.leftPosition = moveLeft;
+    this.center = center;
+    this.rightPosition = moveRight;
 }
 
 function Snake(kind) {
     this.kind = kind;
-    this.length = new Body(3);
-    this.look = new Head('green', 'green');
-    this.move = new Tail(' ', 'center', ' ');
+    this.body = new Body(3);
+    this.head = new Head('green', 'green');
+    this.tail = new Tail('', 'center', '');
 }
 
 Snake.prototype.eat = function(snakeFood) {
-    this.length.growth(snakeFood); 
-    var change = new Head('yellow', 'yellow');
-    this.look.changeColor(change);    
+    this.body.grow(snakeFood);
+    this.head.changeingColor('yellow', 'yellow');
 }
 
-Snake.prototype.movement = function(moveLeft, center, moveRight) {
-
-    var moveAgain = new Tail('moveLeft', 'center', 'moveRight');
-    this.move.moving(moveAgain);
-} 
+Snake.prototype.move = function() {
+    this.tail.changePosition('moveRight', '', 'moveLeft');
+}
 
 var python = new Snake('python');
+
 python.eat(7);
-python.movement();
+python.eat(101);
+python.move();
 
 console.log(python);
