@@ -53,5 +53,7 @@
             prevOperation = this.innerHTML;
         }
     }
-    
+var a = provide('novaKlasa', Screen);
+//a.setNumber(3);
+   
 })();
