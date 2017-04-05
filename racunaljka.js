@@ -1,53 +1,44 @@
-function Body(length) {
-    this.length = length;
-}
+function provide(nameOfNewClass, classConstructor) {
+    this.nameOfNewClass = nameOfNewClass;
+    this.classConstructor = classConstructor;
+};
 
-Body.prototype.grow = function(newLength) {
-    this.length += newLength;
-}
 
-function Head(left, right) {
-    this.leftEye = left;
-    this.rightEye = right;
-}
+function require(newName) {
+    if(newName === this.nameOfNewClass) {
+        return this.classConstructor;
+    }; 
+};
 
-Head.prototype.changeColor = function(colorLeft, colorRight) {
-    this.leftEye = colorLeft;
-    this.rightEye = colorRight;
-}
 
-function Tail(leftPosition, center, rightPosition) {
-    this.leftPosition = leftPosition;
-    this.center = center;
-    this.rightPosition = rightPosition;
-}
-
-Tail.prototype.changePosition = function(moveLeft, center, moveRight) {
-    this.leftPosition = moveLeft;
-    this.center = center;
-    this.rightPosition = moveRight;
-}
-
-function Snake(kind) {
+function Screen(kind) {
     this.kind = kind;
-    this.body = new Body(3);
-    this.head = new Head('green', 'green');
-    this.tail = new Tail('', 'center', '');
-}
+}; 
 
-Snake.prototype.eat = function(snakeFood) {
-    this.body.grow(snakeFood);
-    this.head.changeColor('yellow', 'yellow');
-}
+provide('calculator.Screen', Screen);
 
-Snake.prototype.move = function() {
-    this.tail.changePosition('moveRight', '', 'moveLeft');
-}
+var nextClass = require('calculator.Screen');
+var nextInstance = new nextClass('glass');
+console.log(nextInstance);
 
-var python = new Snake('python');
 
-python.eat(7);
-python.eat(101);
-python.move();
 
-console.log(python);
+function Snake(length) {
+    this.length = length;
+};
+
+provide('python.Screen', Snake);
+
+var anotherClass = require('python.Screen');
+var anotherInstance = new anotherClass(12);
+console.log(anotherInstance);
+
+function Screen(shape) {
+    this.shape = shape;
+};
+
+provide('clock.Screen', Screen);
+
+var sequentClass = require('clock.Screen');
+var sequentInstance = new sequentClass('circle');
+console.log(sequentInstance);
