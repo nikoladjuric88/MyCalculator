@@ -1,20 +1,21 @@
-function provide(nameOfNewClass, classConstructor) {
-    this.nameOfNewClass = nameOfNewClass;
-    this.classConstructor = classConstructor;
-};
-
+this.obj = {};
+function provide(callInstance, classConstructor) {
+   this.callInstance = callInstance;
+	this.classConstructor = classConstructor;
+ 
+	 key =  this.callInstance;
+	 obj[key] = this.classConstructor;
+	 
+	}
 
 function require(newName) {
-    if(newName === this.nameOfNewClass) {
-        return this.classConstructor;
-    }; 
+	if(newName === key)	
+		return obj[key];
 };
 
-
 function Screen(kind) {
-    this.kind = kind;
+	this.kind = kind;
 }; 
-
 provide('calculator.Screen', Screen);
 
 var nextClass = require('calculator.Screen');
@@ -22,23 +23,31 @@ var nextInstance = new nextClass('glass');
 console.log(nextInstance);
 
 
-
-function Snake(length) {
-    this.length = length;
-};
-
-provide('python.Screen', Snake);
-
-var anotherClass = require('python.Screen');
-var anotherInstance = new anotherClass(12);
-console.log(anotherInstance);
-
-function Screen(shape) {
-    this.shape = shape;
-};
-
+function Screen(usage) {
+	this.usage = usage;
+}
 provide('clock.Screen', Screen);
 
-var sequentClass = require('clock.Screen');
-var sequentInstance = new sequentClass('circle');
+
+var anotherClass = require('clock.Screen');
+var anotherInstance = new anotherClass('time');
+console.log(anotherInstance);
+
+
+function Sneak(color) {
+	this.color = color;
+}
+
+provide('what.Sneak', Sneak);
+var sequentClass = require('what.Sneak');
+var sequentInstance = new sequentClass('red');
 console.log(sequentInstance);
+
+function Watch(fabric) {
+	this.fabric = fabric;
+}
+
+provide('which.fabric', Watch);
+var secondClass = require('which.fabric');
+var secondInstance = new secondClass('leather');
+console.log(secondInstance);
