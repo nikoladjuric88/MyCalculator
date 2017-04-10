@@ -1,5 +1,6 @@
 (function() {
     "use strict";
+   
     var result = 0;
     var screen = new Screen(document.getElementById('screen'));
     var buttons = document.querySelector('.allButtons');
@@ -53,7 +54,5 @@
             prevOperation = this.innerHTML;
         }
     }
-var a = provide('novaKlasa', Screen);
-//a.setNumber(3);
-   
+
 })();

@@ -1,14 +1,16 @@
-function provide(newClass, constructor) {
-	var newClass = new constructor(document.getElementById('screen'));
-	return newClass;
+(function(global) {
+var obj = {};
+function provide(callInstance, classConstructor) {
+    key = callInstance;
+    obj[key] = classConstructor;
+}
+
+function require(newName) {
+    if (newName === key)
+        return obj[key];
 };
 
+global.provide = provide;
+global.require = require;
 
-
-/*
-function require(className) {
-	return function() {
-		return new Class;
-	}
-};
-*/
+})(window);

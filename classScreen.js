@@ -28,11 +28,7 @@
             this.element.value += digit;
         }
     }
-
-  
-
-
-
+    
     global.Screen = Screen;
 
 }(window));
