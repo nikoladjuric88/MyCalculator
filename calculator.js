@@ -55,4 +55,16 @@
         }
     }
 
+
+function Watch(fabric) {
+    this.fabric = fabric;
+}
+
+provide('which.fabric', Watch);
+var secondClass = require('which.fabric');
+var secondInstance = new secondClass('leather');
+console.log(secondInstance);
+
+
+
 })();

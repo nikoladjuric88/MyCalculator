@@ -1,15 +1,17 @@
 (function(global) {
 	 "use strict";
 var obj = {};
-var key;
-function provide(callInstance, classConstructor) {
-    key = callInstance;
-    obj[key] = classConstructor;
+
+function provide(callInstance, classConstructor) { 
+    obj[callInstance] = classConstructor;
 }
 
 function require(newName) {
-    if (newName === key)
-        return obj[key];
+       for(var prop in obj) {
+       	if(prop === newName) {
+       		return obj[prop];
+       	}
+       }
 };
 
 global.provide = provide;
