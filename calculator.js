@@ -1,6 +1,6 @@
 (function() {
     "use strict";
-   
+
     var result = 0;
     var screen = new Screen(document.getElementById('screen'));
     var buttons = document.querySelector('.allButtons');
@@ -47,7 +47,7 @@
                         result = Number(result) / Number(currNumber);
                         break;
                 }
-               
+
             }
             screen.resetOnNextInput();
             screen.setNumber(result);
@@ -55,16 +55,28 @@
         }
     }
 
+    function Watch(fabric) {
+        this.fabric = fabric;
+    }
+    provide('which.fabric', Watch);
+    var secondClass = require('which.fabric');
+    var secondInstance = new secondClass('leather');
+    console.log(secondInstance);
 
-function Watch(fabric) {
-    this.fabric = fabric;
-}
+    function Screen(kind) {
+        this.kind = kind;
+    };
+    provide('calculator.Screen', Screen);
+    var nextClass = require('calculator.Screen');
+    var nextInstance = new nextClass('glass');
+    console.log(nextInstance);
 
-provide('which.fabric', Watch);
-var secondClass = require('which.fabric');
-var secondInstance = new secondClass('leather');
-console.log(secondInstance);
-
-
+    function Screen(usage) {
+        this.usage = usage;
+    }
+    provide('clock.Screen', Screen);
+    var anotherClass = require('clock.Screen');
+    var anotherInstance = new anotherClass('time');
+    console.log(anotherInstance);
 
 })();
