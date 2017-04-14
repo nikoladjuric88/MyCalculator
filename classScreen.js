@@ -1,4 +1,4 @@
-(function(global) {
+(function() {
     "use strict";
 
     function Screen(element) {
@@ -16,7 +16,6 @@
 
     Screen.prototype.getNumber = function() {
         return this.element.value;
-
     };
 
     Screen.prototype.addDigit = function(digit) {
@@ -29,6 +28,6 @@
         }
     }
     
-    global.Screen = Screen;
+    provide('calculator.output.Screen', Screen);
 
-}(window));
+}());

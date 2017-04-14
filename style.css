@@ -8,30 +8,49 @@
 #coma {
     width: 25px;
     height: 20px;
-    padding: 0px 0px 0px 0px;
 }
 
 #Squareroot {
     width: 25px;
     height: 20px;
-    padding: 0px 0px 0px 0px;
 }
 
 #Square {
     width: 25px;
     height: 20px;
-    padding: 0px 0px 0px 0px;
 }
 
 #Percent {
-    width: 25px;
-    height: 20px;
-    padding: 0px 0px 0px 0px;
+    width: 30px;
+}
+
+#memoryClear {
+    width: 30px;
+    margin: 10px 0px 0px 3px;
+    padding: 2px 0px 0px 0px;
+}
+
+#memoryRecall {
+    width: 30px;
+    margin: 10px 0px 0px 3px;
+    padding: 2px 0px 0px 0px;
+}
+
+#memoryPlus {
+    width: 30px;
+    margin: 10px 0px 0px 3px;
+    padding: 2px 0px 0px 0px;
+}
+
+#memoryMinus {
+    width: 30px;
+    margin: 10px 0px 0px 3px;
+    padding: 2px 0px 0px 0px;
 }
 
 .allButtons {
-    width: 143px;
-    height: 235px;
+    width: 150px;
+    height: 260px;
     background: linear-gradient(#7F8C8D, #CACFD2);
     border: 1px solid #CACFD2;
     border-radius: 0.5em;
@@ -56,8 +75,4 @@
 #delete {
     width: 30px;
     margin: 0px 0px 0px 4px;
-}
-
-#equality {
-    width: 30px;
 }

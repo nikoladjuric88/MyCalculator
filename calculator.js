@@ -2,7 +2,9 @@
     "use strict";
 
     var result = 0;
-    var screen = new Screen(document.getElementById('screen'));
+    var callScreen = require('calculator.output.Screen');
+    var screen = new callScreen(document.getElementById('screen'));
+
     var buttons = document.querySelector('.allButtons');
     var numberButtons = buttons.querySelectorAll('.number');
 
@@ -16,12 +18,13 @@
 
     var operationButtons = buttons.querySelectorAll('.operation');
 
-    for (var i = 0; i <= operationButtons.length - 1; i++) {
+    for (var i = 0; i < operationButtons.length; i++) {
         var isInitialAction = true;
         var prevOperation;
 
         operationButtons[i].onclick = function() {
             var currNumber = screen.getNumber();
+
 
             if (isInitialAction) {
                 result = currNumber;
@@ -46,8 +49,10 @@
                     case '/':
                         result = Number(result) / Number(currNumber);
                         break;
+                     case '=': 
+                        result = currNumber;
+                        break;
                 }
-
             }
             screen.resetOnNextInput();
             screen.setNumber(result);
@@ -55,28 +60,37 @@
         }
     }
 
-    function Watch(fabric) {
-        this.fabric = fabric;
-    }
-    provide('which.fabric', Watch);
-    var secondClass = require('which.fabric');
-    var secondInstance = new secondClass('leather');
-    console.log(secondInstance);
+    var newNum = require('memory.num');
+    var memo = new newNum();
 
-    function Screen(kind) {
-        this.kind = kind;
-    };
-    provide('calculator.Screen', Screen);
-    var nextClass = require('calculator.Screen');
-    var nextInstance = new nextClass('glass');
-    console.log(nextInstance);
+    var numPlus = document.getElementById('memoryPlus');
+    numPlus.onclick = function() {
+        var currNumber = screen.getNumber();    
+        memo.mPlus(currNumber);
+         console.log(memo);  
+          screen.resetOnNextInput();
+     } 
 
-    function Screen(usage) {
-        this.usage = usage;
+    var numMinus = document.getElementById('memoryMinus');
+    numMinus.onclick = function() {
+        var currNumber = screen.getNumber();
+        memo.mMinus(currNumber);
+        console.log(memo);
+        screen.resetOnNextInput();
     }
-    provide('clock.Screen', Screen);
-    var anotherClass = require('clock.Screen');
-    var anotherInstance = new anotherClass('time');
-    console.log(anotherInstance);
+
+    var mRecall = document.getElementById('memoryRecall');
+    mRecall.onclick = function() {
+       var callMemory = memo.mRecall();
+       screen.setNumber(callMemory);
+        screen.resetOnNextInput();
+    }
+
+    var mClear = document.getElementById('memoryClear');
+    mClear.onclick = function() {
+       var noMemory = memo.mClear();
+       console.log(noMemory);
+        screen.resetOnNextInput();
+    }
 
 })();
