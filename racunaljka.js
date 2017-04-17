@@ -82,6 +82,9 @@
        }
     }
 
+
+
+
             screen.resetOnNextInput();
             if(advantageous === false) {
             screen.setNumber(result);
