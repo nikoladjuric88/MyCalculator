@@ -10,6 +10,10 @@
         this.reset = true;
     }
 
+    Screen.prototype.resetOfNextInput = function() {
+        this.reset = false;
+    }
+
     Screen.prototype.setNumber = function(number) {
         this.element.value = number;
     }

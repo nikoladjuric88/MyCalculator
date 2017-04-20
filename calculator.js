@@ -1,9 +1,16 @@
 (function() {
     "use strict";
 
+    var ChangeProgram = require('advantageous.ops');
+    var changeProgram = new ChangeProgram();
+    var adOps = document.getElementById('advantageusOps');
+    adOps.onclick = function() {
+        changeProgram.advantageousOperationsOn();
+    }
+
     var result = 0;
-    var callScreen = require('calculator.output.Screen');
-    var screen = new callScreen(document.getElementById('screen'));
+    var Screen = require('calculator.output.Screen');
+    var screen = new Screen(document.getElementById('screen'));
 
     var buttons = document.querySelector('.allButtons');
     var numberButtons = buttons.querySelectorAll('.number');
@@ -25,15 +32,12 @@
         operationButtons[i].onclick = function() {
             var currNumber = screen.getNumber();
 
-
             if (isInitialAction) {
                 result = currNumber;
                 isInitialAction = false;
 
             } else {
-
                 switch (prevOperation) {
-
                     case '+':
                         result = Number(result) + Number(currNumber);
                         break;
@@ -49,48 +53,66 @@
                     case '/':
                         result = Number(result) / Number(currNumber);
                         break;
-                     case '=': 
+                    case '=':
                         result = currNumber;
                         break;
                 }
+
             }
-            screen.resetOnNextInput();
-            screen.setNumber(result);
+
+            if (changeProgram.advantageous === true) {
+                var currOperation = this.innerHTML;
+                screen.setNumber(currNumber);
+                changeProgram.addNumbers(currNumber);
+                if (currOperation !== '=') {
+                    changeProgram.addOperations(currOperation);
+                } else {
+                    var outcome = changeProgram.returningValue();
+                    screen.setNumber(outcome);
+                }
+            } else {
+                screen.setNumber(result);
+            }
             prevOperation = this.innerHTML;
+            screen.resetOnNextInput();
+
+           
         }
+
     }
 
-    var newNum = require('memory.num');
-    var memo = new newNum();
+
+    var Memory = require('memory.num');
+    var memo = new Memory();
 
     var numPlus = document.getElementById('memoryPlus');
     numPlus.onclick = function() {
-        var currNumber = screen.getNumber();    
-        memo.mPlus(currNumber);
-         console.log(memo);  
-          screen.resetOnNextInput();
-     } 
+        var currNumber = screen.getNumber();
+        memo.Plus(Number(currNumber));
+        screen.resetOnNextInput();
+    }
 
     var numMinus = document.getElementById('memoryMinus');
     numMinus.onclick = function() {
         var currNumber = screen.getNumber();
-        memo.mMinus(currNumber);
-        console.log(memo);
+        memo.Minus(Number(currNumber));
         screen.resetOnNextInput();
     }
 
-    var mRecall = document.getElementById('memoryRecall');
-    mRecall.onclick = function() {
-       var callMemory = memo.mRecall();
-       screen.setNumber(callMemory);
-        screen.resetOnNextInput();
+    var Recall = document.getElementById('memoryRecall');
+    Recall.onclick = function() {
+        var currNumber = screen.getNumber();
+        var callMemory = memo.Recall();
+        if (callMemory === 0) {
+            screen.setNumber(currNumber);
+        } else {
+            screen.setNumber(callMemory);
+        }
     }
 
-    var mClear = document.getElementById('memoryClear');
-    mClear.onclick = function() {
-       var noMemory = memo.mClear();
-       console.log(noMemory);
-        screen.resetOnNextInput();
+    var Clear = document.getElementById('memoryClear');
+    Clear.onclick = function() {
+        var noMemory = memo.Clear();
     }
 
 })();

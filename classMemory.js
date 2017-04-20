@@ -5,21 +5,20 @@
         this.num = 0;
     }
 
-    Memory.prototype.mPlus = function(number) {
-        this.num += Number(number);
+    Memory.prototype.Plus = function(number) {
+        this.num += number;
     }
 
-    Memory.prototype.mMinus = function(number) {
-        this.num += Number(-number);
+    Memory.prototype.Minus = function(number) {
+        this.num += -number;
     }
 
-    Memory.prototype.mRecall = function() {
+    Memory.prototype.Recall = function() {
         return this.num;
     }
 
-    Memory.prototype.mClear = function() {
+    Memory.prototype.Clear = function() {
         this.num = 0;
-        return this.num;
     }
 
     provide('memory.num', Memory);
