@@ -32,6 +32,12 @@ for (var i = 0; i < arrNumbers.length; i++) {
             arrNumbers.splice(arrNumbers.indexOf(0), 1);
             arrOperations.splice(arrOperations.indexOf('-'), 1);
         }
+    }
+}
+
+
+for (var i = 0; i < arrNumbers.length; i++) {
+    for (var x = 0; x < arrOperations.length; x++) {
         while (arrOperations[x] === '+' && i === x) {
             arrNumbers[i] = arrNumbers[i] + arrNumbers[i + 1];
             arrNumbers[i + 1] = 0;
