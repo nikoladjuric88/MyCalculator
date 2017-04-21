@@ -29,7 +29,6 @@
                 }
             }
         }
-
         for (var i = 0; i < this.numberArr.length; i++) {
             for (var x = 0; x < this.operationArr.length; x++) {
                 while (this.operationArr[x] === '-' && i === x) {
@@ -64,8 +63,7 @@
     Advantage.prototype.addNumbers = function(number) {
         this.numberArr.push(number);
     };
-
-
+    
     provide('advantageous.ops', Advantage);
 
 }());

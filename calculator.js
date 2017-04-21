@@ -1,11 +1,12 @@
 (function() {
     "use strict";
 
-    var ChangeProgram = require('advantageous.ops');
-    var changeProgram = new ChangeProgram();
-    var adOps = document.getElementById('advantageusOps');
-    adOps.onclick = function() {
-        changeProgram.advantageousOperationsOn();
+    var Advantage = require('advantageous.ops');
+    var advantage = new Advantage();
+    var advOps = document.getElementById('advantageusOps');
+    advOps.onclick = function() {
+        document.getElementById('advantageusOps').style.backgroundColor = '#848484';
+        advantage.advantageousOperationsOn();
     }
 
     var result = 0;
@@ -57,17 +58,16 @@
                         result = currNumber;
                         break;
                 }
-
             }
 
-            if (changeProgram.advantageous === true) {
+            if (advantage.advantageous === true) {
                 var currOperation = this.innerHTML;
                 screen.setNumber(currNumber);
-                changeProgram.addNumbers(currNumber);
+                advantage.addNumbers(currNumber);
                 if (currOperation !== '=') {
-                    changeProgram.addOperations(currOperation);
+                    advantage.addOperations(currOperation);
                 } else {
-                    var outcome = changeProgram.returningValue();
+                    var outcome = advantage.returningValue();
                     screen.setNumber(outcome);
                 }
             } else {
@@ -75,32 +75,28 @@
             }
             prevOperation = this.innerHTML;
             screen.resetOnNextInput();
-
-           
         }
-
     }
-
 
     var Memory = require('memory.num');
     var memo = new Memory();
 
-    var numPlus = document.getElementById('memoryPlus');
-    numPlus.onclick = function() {
+    var memoryPlus = document.getElementById('memoryPlus');
+    memoryPlus.onclick = function() {
         var currNumber = screen.getNumber();
         memo.Plus(Number(currNumber));
         screen.resetOnNextInput();
     }
 
-    var numMinus = document.getElementById('memoryMinus');
-    numMinus.onclick = function() {
+    var memoryMinus = document.getElementById('memoryMinus');
+    memoryMinus.onclick = function() {
         var currNumber = screen.getNumber();
         memo.Minus(Number(currNumber));
         screen.resetOnNextInput();
     }
 
-    var Recall = document.getElementById('memoryRecall');
-    Recall.onclick = function() {
+    var memoryRecall = document.getElementById('memoryRecall');
+    memoryRecall.onclick = function() {
         var currNumber = screen.getNumber();
         var callMemory = memo.Recall();
         if (callMemory === 0) {
@@ -110,8 +106,8 @@
         }
     }
 
-    var Clear = document.getElementById('memoryClear');
-    Clear.onclick = function() {
+    var memoryClear = document.getElementById('memoryClear');
+    memoryClear.onclick = function() {
         var noMemory = memo.Clear();
     }
 

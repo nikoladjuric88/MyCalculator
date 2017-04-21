@@ -7,7 +7,7 @@
     }
 
     function require(newName) {
-      	return obj[newName];
+        return obj[newName];
     }
 
     global.provide = provide;
