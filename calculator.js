@@ -67,7 +67,6 @@
                 } else {
                     var outcome = precedence.returnValue();
                     screen.setNumber(outcome);
-                    console.log(precedence);
                 }
             } else {
                 screen.setNumber(result);
