@@ -1,12 +1,12 @@
 (function() {
     "use strict";
 
-    var Advantage = require('advantageous.ops');
-    var advantage = new Advantage();
-    var advOps = document.getElementById('advantageusOps');
-    advOps.onclick = function() {
-        document.getElementById('advantageusOps').style.backgroundColor = '#848484';
-        advantage.advantageousOperationsOn();
+    var Precedence = require('precedence.ops');
+    var precedence = new Precedence();
+    var precedenceOps = document.getElementById('precedenceOps');
+    precedenceOps.onclick = function() {
+        document.getElementById('precedenceOps').style.backgroundColor = '#848484';
+        precedence.precedenceOn();
     }
 
     var result = 0;
@@ -17,7 +17,6 @@
     var numberButtons = buttons.querySelectorAll('.number');
 
     for (var i = 0; i <= numberButtons.length - 1; i++) {
-
         numberButtons[i].onclick = function() {
             var buttonDigit = parseInt(this.innerHTML);
             screen.addDigit(buttonDigit);
@@ -36,7 +35,6 @@
             if (isInitialAction) {
                 result = currNumber;
                 isInitialAction = false;
-
             } else {
                 switch (prevOperation) {
                     case '+':
@@ -60,19 +58,21 @@
                 }
             }
 
-            if (advantage.advantageous === true) {
+            if (precedence.turnOn === true) {
                 var currOperation = this.innerHTML;
                 screen.setNumber(currNumber);
-                advantage.addNumbers(currNumber);
+                precedence.addNumbers(currNumber);
                 if (currOperation !== '=') {
-                    advantage.addOperations(currOperation);
+                    precedence.addOperations(currOperation);
                 } else {
-                    var outcome = advantage.returningValue();
+                    var outcome = precedence.returnValue();
                     screen.setNumber(outcome);
+                    console.log(precedence);
                 }
             } else {
                 screen.setNumber(result);
             }
+
             prevOperation = this.innerHTML;
             screen.resetOnNextInput();
         }
