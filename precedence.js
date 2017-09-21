@@ -4,54 +4,48 @@
     function Precedence() {
         this.numbers = [];
         this.operations = [];
-        this.turnOn = false;
-        this.finalResult = 0;
     }
 
-    Precedence.prototype.returnValue = function() {
-        this.result = Number(this.numbers[0]);
-
-        for (var i = 0; i < this.numbers.length; i++) {
+    Precedence.prototype.calculateResult = function() {
+        var temporaryResult = this.numbers[0];
+        var finalResult = 0;
+        for (var i = 0; i < this.operations.length; i++) {
             if (this.operations[i] === 'x') {
-                this.result *= this.numbers[i + 1];
-            }
-            if (this.operations[i] === '/') {
-                this.result /= this.numbers[i + 1];
-            }
-            if (this.operations[i] === '-') {
+                temporaryResult *= this.numbers[i + 1];
+            } else if (this.operations[i] === '/') {
+                temporaryResult /= this.numbers[i + 1];
+            } else if (this.operations[i] === '-') {
                 if (this.operations[i + 1] === '/' || this.operations[i + 1] === 'x') {
-                    this.finalResult += this.result;
-                    this.result = -this.numbers[i + 1];
-                    continue;
+                    finalResult += temporaryResult;
+                    temporaryResult = -this.numbers[i + 1];
+                } else {
+                    temporaryResult -= this.numbers[i + 1];
                 }
-                this.result -= this.numbers[i + 1];
-            }
-            if (this.operations[i] === '+') {
+            } else if (this.operations[i] === '+') {
                 if (this.operations[i + 1] === '/' || this.operations[i + 1] === 'x') {
-                    this.finalResult += this.result;
-                    this.result = this.numbers[i + 1];
-                    continue;
-                }
-                this.result += Number(this.numbers[i + 1]);
-            }
-            if (this.operations[i]) {
-                if (this.operations[i + 1] !== '+' && this.operations[i + 1] !== '-' && this.operations[i + 1] !== '/' && this.operations[i + 1] !== 'x') {
-                    this.finalResult += this.result;
+                    finalResult += temporaryResult;
+                    temporaryResult = this.numbers[i + 1];
+                } else {
+                    temporaryResult += Number(this.numbers[i + 1]);
                 }
             }
+            if (i === this.operations.length - 1) {
+                finalResult += temporaryResult;
+            }
+
         }
-        return this.finalResult;
+        return finalResult;
     }
     Precedence.prototype.precedenceOn = function() {
         this.turnOn = true;
     }
 
-    Precedence.prototype.addOperations = function(operation) {
+    Precedence.prototype.addOperation = function(operation) {
         this.operations.push(operation);
     }
 
-    Precedence.prototype.addNumbers = function(number) {
-        this.numbers.push(number);
+    Precedence.prototype.addNumber = function(number) {
+        this.numbers.push(Number(number));
     };
 
     provide('precedence.ops', Precedence);

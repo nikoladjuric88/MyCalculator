@@ -61,11 +61,11 @@
             if (precedence.turnOn === true) {
                 var currOperation = this.innerHTML;
                 screen.setNumber(currNumber);
-                precedence.addNumbers(currNumber);
+                precedence.addNumber(currNumber);
                 if (currOperation !== '=') {
-                    precedence.addOperations(currOperation);
+                    precedence.addOperation(currOperation);
                 } else {
-                    var outcome = precedence.returnValue();
+                    var outcome = precedence.calculateResult();
                     screen.setNumber(outcome);
                 }
             } else {
