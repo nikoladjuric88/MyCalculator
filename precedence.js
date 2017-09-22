@@ -14,25 +14,18 @@
                 temporaryResult *= this.numbers[i + 1];
             } else if (this.operations[i] === '/') {
                 temporaryResult /= this.numbers[i + 1];
-            } else if (this.operations[i] === '-') {
-                if (this.operations[i + 1] === '/' || this.operations[i + 1] === 'x') {
+            } else {
+                var sign = this.operations[i] === '+' ? 1 : -1;
+                if (i !== this.operations.length - 1 && this.operations[i + 1] === '/' || this.operations[i + 1] === 'x') {
                     finalResult += temporaryResult;
-                    temporaryResult = -this.numbers[i + 1];
+                    temporaryResult = sign * this.numbers[i + 1];
                 } else {
-                    temporaryResult -= this.numbers[i + 1];
-                }
-            } else if (this.operations[i] === '+') {
-                if (this.operations[i + 1] === '/' || this.operations[i + 1] === 'x') {
-                    finalResult += temporaryResult;
-                    temporaryResult = this.numbers[i + 1];
-                } else {
-                    temporaryResult += Number(this.numbers[i + 1]);
+                     temporaryResult += sign * this.numbers[i + 1];
                 }
             }
             if (i === this.operations.length - 1) {
                 finalResult += temporaryResult;
             }
-
         }
         return finalResult;
     }
