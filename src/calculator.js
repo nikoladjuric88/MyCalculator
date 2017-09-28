@@ -1,8 +1,8 @@
 "use strict";
 
 var Precedence = require('./precedence');
-var Screen = require('./classScreen');
-var Memory = require('./classMemory');
+var Screen = require('./screen');
+var Memory = require('./memory');
 
 var precedence = new Precedence();
 var precedenceOps = document.getElementById('precedenceOps');
