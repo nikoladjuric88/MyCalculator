@@ -7,7 +7,7 @@ gulp.task('html', function() {
 });
 
 gulp.task('js', function() {
-	return gulp.src('src/djuric.js')
+	return gulp.src('src/EventDispatcher.js')
 	.pipe(browserify({ debug: true}))
 	.pipe(gulp.dest('dist'));
 });
