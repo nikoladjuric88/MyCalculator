@@ -22,5 +22,5 @@ nameCl.bind("serbian", function() {
     console.log("gde si baki");
 });
 
-nameCl.trigger("serbian");
+nameCl.trigger("english");
 
