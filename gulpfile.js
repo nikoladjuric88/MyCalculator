@@ -6,15 +6,10 @@ gulp.task('html', function() {
 	    .pipe(gulp.dest('dist'));
 });
 
-gulp.task('css', function() {
-	gulp.src('src/*.css')
-	    .pipe(gulp.dest('dist'));
-});
-
 gulp.task('js', function() {
-	return gulp.src('src/calculator.js')
+	return gulp.src('src/djuric.js')
 	.pipe(browserify({ debug: true}))
 	.pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['html', 'css', 'js']);
+gulp.task('default', ['html', 'js']);
