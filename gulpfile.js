@@ -6,15 +6,15 @@ gulp.task('html', function() {
 	    .pipe(gulp.dest('dist'));
 });
 
-gulp.task('css', function() {
-	gulp.src('src/*.css')
-	    .pipe(gulp.dest('dist'));
-});
-
 gulp.task('js', function() {
-	return gulp.src('src/calculator.js')
+	return gulp.src('src/file1.js')
 	.pipe(browserify({ debug: true}))
 	.pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['html', 'css', 'js']);
+gulp.task('watch', function() {
+	gulp.watch('src/**/*.html', ['html']);
+	gulp.watch('src/**/*.js', ['js']);
+});
+
+gulp.task('default', ['html', 'js', 'watch']);
