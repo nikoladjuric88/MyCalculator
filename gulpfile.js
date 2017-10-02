@@ -12,4 +12,9 @@ gulp.task('js', function() {
 	.pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['html', 'js']);
+gulp.task('watch', function() {
+	gulp.watch('src/**/*.html', ['html']);
+	gulp.watch('src/**/*.js', ['js']);
+});
+
+gulp.task('default', ['html', 'js', 'watch']);

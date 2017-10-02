@@ -22,4 +22,4 @@ eventDispatcher.bind("serbian", function() {
     console.log("gde si baki");
 });
 
-eventDispatcher.trigger("english");
+eventDispatcher.trigger("serbian");
