@@ -7,7 +7,7 @@ gulp.task('html', function() {
 });
 
 gulp.task('js', function() {
-	return gulp.src('src/EventDispatcher.js')
+	return gulp.src('src/file1.js')
 	.pipe(browserify({ debug: true}))
 	.pipe(gulp.dest('dist'));
 });
