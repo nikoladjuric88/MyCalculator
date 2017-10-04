@@ -19,17 +19,17 @@ EventDispatcher.prototype.trigger = function(eventName) {
 };
 
 EventDispatcher.prototype.unbind = function(eventName, handler) {
-     if (this.eventDispatcherMap[eventName]) {
-           for (var i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
-                if(this.eventDispatcherMap[eventName][i].toString() === handler.toString()) {
-                    this.eventDispatcherMap[eventName].splice(i,1);
-                }
-           }
-     }
+    if (this.eventDispatcherMap[eventName]) {
+        for (i in this.eventDispatcherMap[eventName]) {
+            if (this.eventDispatcherMap[eventName][i] === handler) {
+                this.eventDispatcherMap[eventName].splice(i, 1);
+            }
+        }
+    }
 }
 
 EventDispatcher.prototype.unbindAll = function() {
-     this.eventDispatcherMap = {};
+    this.eventDispatcherMap = {};
 }
 
 module.exports = EventDispatcher;
