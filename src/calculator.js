@@ -3,14 +3,6 @@
 var Precedence = require('./precedence');
 var Screen = require('./screen');
 var Memory = require('./memory');
-var EventDispatcher = require('./eventDispatcher');
-
-var eventDispatcher = new EventDispatcher();
-//eventDispatcher.bind('exampleEvent', function() {
-//  console.log('hi');
-//});
-eventDispatcher.trigger("exampleEvent");
-
 
 var precedence = new Precedence();
 var precedenceOps = document.getElementById('precedenceOps');
