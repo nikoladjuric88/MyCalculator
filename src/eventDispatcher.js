@@ -21,8 +21,7 @@ EventDispatcher.prototype.trigger = function(eventName) {
             try {
                 this.eventDispatcherMap[eventName][i]();
             } catch (e) {
-                this.eventDispatcherMap[eventName].splice(i, 1);
-                i--;
+
             }
         }
     }
