@@ -17,19 +17,17 @@ class EventDispatcher {
 
     trigger(eventName) {
         if (this.eventDispatcherMap[eventName]) {
-            for (var i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
+            for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
                 try {
                     this.eventDispatcherMap[eventName][i]();
-                } catch (e) {
-
-                }
+                } catch (e) {}
             }
         }
     }
 
     unbind(eventName, handler) {
         if (this.eventDispatcherMap[eventName]) {
-            for (var i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
+            for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
                 if (this.eventDispatcherMap[eventName][i] === handler) {
                     this.eventDispatcherMap[eventName].splice(i, 1);
                 }
