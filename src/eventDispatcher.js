@@ -1,21 +1,20 @@
 "use strict";
 
 /**
- *  EventDispatcher handles all functions.
+ *  EventDispatcher handles the functions.
  */
 class EventDispatcher {
 
     /**
-     *  Keep all functions.
-     *  @param {Object}     
+     *  Constructor keep all functions.   
      */
     constructor() {
         this.eventDispatcherMap = {};
     }
 
     /**
-     * Entries functions in object.
-     * @param {String}  event name
+     * Bind entries functions in object.
+     * @param {String}  eventName
      * @param {Functions}  handler 
      */
     bind(eventName, handler) {
@@ -30,7 +29,7 @@ class EventDispatcher {
 
     /**
      *  Trigger given function
-     *  @param  {String} event name 
+     *  @param  {String} eventName 
      */
     trigger(eventName) {
         if (this.eventDispatcherMap[eventName]) {
@@ -43,8 +42,8 @@ class EventDispatcher {
     }
 
     /**
-     *  Remove given function
-     *  @param  {String} event name 
+     *  unbind remove given function
+     *  @param  {String} eventName 
      *  @param  {Functions} handler
      */
     unbind(eventName, handler) {
@@ -58,7 +57,7 @@ class EventDispatcher {
     }
 
     /**
-     *  Remove all functions
+     *  unbindAll remove all functions
      */
     unbindAll() {
         this.eventDispatcherMap = {};
