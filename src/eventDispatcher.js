@@ -42,7 +42,7 @@ class EventDispatcher {
     }
 
     /**
-     *  unbind a given functions from given event
+     *  Unbind a given functions from given event
      *  @param {String} eventName 
      *  @param {Functions} handler
      */
@@ -57,7 +57,7 @@ class EventDispatcher {
     }
 
     /**
-     *  unbind all functions
+     *  Unbind all functions
      */
     unbindAll() {
         this.eventDispatcherMap = {};
