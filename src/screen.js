@@ -2,7 +2,7 @@
 
 /**
  *  Screen handle calculator screen  
- *  Screen constructor.
+ *  Constructor.
  *  @param {string} element
  */
 function Screen(element) {
@@ -11,7 +11,7 @@ function Screen(element) {
 }
 
 /**
- * allow a new entry 
+ * Allow a new entry 
  */
 Screen.prototype.resetOnNextInput = function() {
     this.reset = true;
@@ -22,7 +22,7 @@ Screen.prototype.resetOfNextInput = function() {
 }
 
 /**
- * set given number on the screen 
+ * Set given number on the screen 
  * @param {number} number
  */
 Screen.prototype.setNumber = function(number) {
@@ -30,14 +30,14 @@ Screen.prototype.setNumber = function(number) {
 }
 
 /**
- * get current number from the screen 
+ * Get current number from the screen 
  */
 Screen.prototype.getNumber = function() {
     return this.element.value;
 };
 
 /**
- * add new number on the screen 
+ * Add new number on the screen 
  * @param {number} digit
  */
 Screen.prototype.addDigit = function(digit) {

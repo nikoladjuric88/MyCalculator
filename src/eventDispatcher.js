@@ -6,16 +6,16 @@
 class EventDispatcher {
 
     /**
-     *  Constructor keep all functions.   
+     *  Constructor.  
      */
     constructor() {
         this.eventDispatcherMap = {};
     }
 
     /**
-     * Bind entries functions in object.
-     * @param {String}  eventName
-     * @param {Functions}  handler 
+     * Bind a given functions to a given event.
+     * @param {String} eventName
+     * @param {Functions} handler 
      */
     bind(eventName, handler) {
         if (typeof handler === 'function') {
@@ -28,8 +28,8 @@ class EventDispatcher {
     }
 
     /**
-     *  Trigger given function
-     *  @param  {String} eventName 
+     *  Trigger a given function
+     *  @param {String} eventName 
      */
     trigger(eventName) {
         if (this.eventDispatcherMap[eventName]) {
@@ -42,9 +42,9 @@ class EventDispatcher {
     }
 
     /**
-     *  unbind remove given function
-     *  @param  {String} eventName 
-     *  @param  {Functions} handler
+     *  unbind a given functions from given event
+     *  @param {String} eventName 
+     *  @param {Functions} handler
      */
     unbind(eventName, handler) {
         if (this.eventDispatcherMap[eventName]) {
@@ -57,7 +57,7 @@ class EventDispatcher {
     }
 
     /**
-     *  unbindAll remove all functions
+     *  unbind all functions
      */
     unbindAll() {
         this.eventDispatcherMap = {};

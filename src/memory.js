@@ -1,14 +1,15 @@
  "use strict";
 
 /**
- *  Constructor Memory keep result in memory. 
+ * Memory keeps given result in memory.
+ * Constructor. 
  */
  function Memory() {
      this.num = 0;
  }
 
 /**
- *  Plus add number to result in memory.
+ *  Add number to result in memory.
  *  @param {number}  number
  */
  Memory.prototype.Plus = function(number) {
@@ -16,7 +17,7 @@
  }
 
 /**
- *  Minus subtracts number to result in memory.
+ *  Subtract number to result in memory.
  *  @param {number}  number
  */
  Memory.prototype.Minus = function(number) {
@@ -24,14 +25,14 @@
  }
 
 /**
- *  Recall returns result from memory.
+ * Return result from memory.
  */
  Memory.prototype.Recall = function() {
      return this.num;
  }
 
 /**
- *  Clear set result equal zero.
+ * Set result equal zero.
  */
  Memory.prototype.Clear = function() {
      this.num = 0;

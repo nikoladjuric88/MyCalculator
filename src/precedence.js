@@ -2,7 +2,7 @@
 
 /**
  *  Precedence determinate priority operations  
- *  Precedence constructor. 
+ *  Constructor. 
  */
 function Precedence() {
     this.numbers = [];
@@ -10,7 +10,7 @@ function Precedence() {
 }
 
 /**
- * gives result of precedence operations  
+ * Gives result of precedence operations  
  */
 Precedence.prototype.calculateResult = function() {
     var temporaryResult = this.numbers[0];
@@ -37,14 +37,14 @@ Precedence.prototype.calculateResult = function() {
 }
 
 /**
- * allow calculation with precedence operations  
+ * Allow calculation with precedence operations  
  */
 Precedence.prototype.precedenceOn = function() {
     this.turnOn = true;
 }
 
 /**
- * add operations into operations array 
+ * Add operations into operations array 
  * @param {operation}  operation 
  */
 Precedence.prototype.addOperation = function(operation) {
@@ -52,8 +52,8 @@ Precedence.prototype.addOperation = function(operation) {
 }
 
 /**
- * add number into number array 
- * @param {number}  numbers array 
+ * Add number into number array 
+ * @param {number}  number 
  */
 Precedence.prototype.addNumber = function(number) {
     this.numbers.push(Number(number));
