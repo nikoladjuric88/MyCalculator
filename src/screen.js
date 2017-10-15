@@ -1,9 +1,9 @@
 "use strict";
 
 /**
- *  Screen handle calculator screen  
+ *  Screen handles calculator screen.  
  *  Constructor.
- *  @param {string} element
+ *  @param {String} element.
  */
 function Screen(element) {
     this.element = element;
@@ -11,7 +11,7 @@ function Screen(element) {
 }
 
 /**
- * Allow a new entry 
+ * Allows a new entry. 
  */
 Screen.prototype.resetOnNextInput = function() {
     this.reset = true;
@@ -22,23 +22,23 @@ Screen.prototype.resetOfNextInput = function() {
 }
 
 /**
- * Set given number on the screen 
- * @param {number} number
+ * Sets the given number on the screen 
+ * @param {Number} number
  */
 Screen.prototype.setNumber = function(number) {
     this.element.value = number;
 }
 
 /**
- * Get current number from the screen 
+ * Gets the current number from the screen. 
  */
 Screen.prototype.getNumber = function() {
     return this.element.value;
 };
 
 /**
- * Add new number on the screen 
- * @param {number} digit
+ * Adds new number on the screen. 
+ * @param {Number} digit.
  */
 Screen.prototype.addDigit = function(digit) {
 

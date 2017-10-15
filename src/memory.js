@@ -9,30 +9,30 @@
  }
 
 /**
- *  Add number to result in memory.
- *  @param {number}  number
+ *  Adds a number to the result in the memory.
+ *  @param {Number}  number.
  */
  Memory.prototype.Plus = function(number) {
      this.num += number;
  }
 
 /**
- *  Subtract number to result in memory.
- *  @param {number}  number
+ *  Subtracts a number from the result in the memory.
+ *  @param {Number}  number.
  */
  Memory.prototype.Minus = function(number) {
      this.num += -number;
  }
 
 /**
- * Return result from memory.
+ * Returns the result from the memory.
  */
  Memory.prototype.Recall = function() {
      return this.num;
  }
 
 /**
- * Set result equal zero.
+ * Resets the result to zero.
  */
  Memory.prototype.Clear = function() {
      this.num = 0;

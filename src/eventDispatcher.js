@@ -13,9 +13,9 @@ class EventDispatcher {
     }
 
     /**
-     * Bind a given functions to a given event.
-     * @param {String} eventName
-     * @param {Functions} handler 
+     * Binds a given functions to a given event.
+     * @param {String} eventName.
+     * @param {Function} handler. 
      */
     bind(eventName, handler) {
         if (typeof handler === 'function') {
@@ -28,8 +28,8 @@ class EventDispatcher {
     }
 
     /**
-     *  Trigger a given function
-     *  @param {String} eventName 
+     *  Triggers a given event.
+     *  @param {String} eventName. 
      */
     trigger(eventName) {
         if (this.eventDispatcherMap[eventName]) {
@@ -42,9 +42,9 @@ class EventDispatcher {
     }
 
     /**
-     *  Unbind a given functions from given event
-     *  @param {String} eventName 
-     *  @param {Functions} handler
+     *  Unbinds a given functions from given event.
+     *  @param {String} eventName. 
+     *  @param {Function} handler.
      */
     unbind(eventName, handler) {
         if (this.eventDispatcherMap[eventName]) {
@@ -57,7 +57,7 @@ class EventDispatcher {
     }
 
     /**
-     *  Unbind all functions
+     *  Unbinds all functions
      */
     unbindAll() {
         this.eventDispatcherMap = {};
