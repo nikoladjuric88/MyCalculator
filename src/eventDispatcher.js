@@ -19,15 +19,17 @@ class EventDispatcher {
      */
     bind(eventName, handler) {
 
-        if (typeof eventName !== 'string' || typeof handler !== 'function') {
-            throw new SyntaxError("First parameter is not string or second parameter is not function");
-        } else {
-            if (this.eventDispatcherMap[eventName]) {
-                this.eventDispatcherMap[eventName].push(handler);
-            } else {
-                this.eventDispatcherMap[eventName] = [handler];
-            }
+        if (typeof eventName !== 'string') {
+            throw new TypeError("Parameter should be string");
+        } else if (typeof handler !== 'function') {
+            throw new TypeError("Parameter should be function");
         }
+        if (this.eventDispatcherMap[eventName]) {
+            this.eventDispatcherMap[eventName].push(handler);
+        } else {
+            this.eventDispatcherMap[eventName] = [handler];
+        }
+
     }
 
     /**
@@ -36,14 +38,13 @@ class EventDispatcher {
      */
     trigger(eventName) {
         if (typeof eventName !== 'string') {
-            throw new SyntaxError("Parameter is not string");
-        } else {
-            if (this.eventDispatcherMap[eventName]) {
-                for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
-                    try {
-                        this.eventDispatcherMap[eventName][i]();
-                    } catch (e) {}
-                }
+            throw new TypeError("Parameter is not string");
+        }
+        if (this.eventDispatcherMap[eventName]) {
+            for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
+                try {
+                    this.eventDispatcherMap[eventName][i]();
+                } catch (e) {}
             }
         }
     }
@@ -54,14 +55,15 @@ class EventDispatcher {
      *  @param {Function} handler.
      */
     unbind(eventName, handler) {
-        if (typeof eventName !== 'string' || typeof handler !== 'function') {
-            throw new SyntaxError("First parameter is not string or second parameter is not function");
-        } else {
-            if (this.eventDispatcherMap[eventName]) {
-                for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
-                    if (this.eventDispatcherMap[eventName][i] === handler) {
-                        this.eventDispatcherMap[eventName].splice(i, 1);
-                    }
+        if (typeof eventName !== 'string') {
+            throw new TypeError("Parameter should be string");
+        } else if (typeof handler !== 'function') {
+            throw new TypeError("Parameter should be function");
+        }
+        if (this.eventDispatcherMap[eventName]) {
+            for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
+                if (this.eventDispatcherMap[eventName][i] === handler) {
+                    this.eventDispatcherMap[eventName].splice(i, 1);
                 }
             }
         }
