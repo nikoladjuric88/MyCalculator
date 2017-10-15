@@ -21,7 +21,8 @@ class EventDispatcher {
 
         if (typeof eventName !== 'string') {
             throw new TypeError("Parameter should be string");
-        } else if (typeof handler !== 'function') {
+        }
+        if (typeof handler !== 'function') {
             throw new TypeError("Parameter should be function");
         }
         if (this.eventDispatcherMap[eventName]) {
@@ -29,7 +30,6 @@ class EventDispatcher {
         } else {
             this.eventDispatcherMap[eventName] = [handler];
         }
-
     }
 
     /**
@@ -57,7 +57,8 @@ class EventDispatcher {
     unbind(eventName, handler) {
         if (typeof eventName !== 'string') {
             throw new TypeError("Parameter should be string");
-        } else if (typeof handler !== 'function') {
+        }
+        if (typeof handler !== 'function') {
             throw new TypeError("Parameter should be function");
         }
         if (this.eventDispatcherMap[eventName]) {
