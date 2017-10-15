@@ -38,7 +38,7 @@ class EventDispatcher {
      */
     trigger(eventName) {
         if (typeof eventName !== 'string') {
-            throw new TypeError("Parameter is not string");
+            throw new TypeError("Parameter should be string");
         }
         if (this.eventDispatcherMap[eventName]) {
             for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
