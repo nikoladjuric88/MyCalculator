@@ -20,7 +20,7 @@ class EventDispatcher {
     bind(eventName, handler) {
 
         if (typeof eventName !== 'string' || typeof handler !== 'function') {
-            throw new Errror("First parameter is not string and second parameter is not function");
+            throw new SyntaxError("First parameter is not string or second parameter is not function");
         } else {
             if (this.eventDispatcherMap[eventName]) {
                 this.eventDispatcherMap[eventName].push(handler);
@@ -36,7 +36,7 @@ class EventDispatcher {
      */
     trigger(eventName) {
         if (typeof eventName !== 'string') {
-            throw new Errror("Parameter is not string");
+            throw new SyntaxError("Parameter is not string");
         } else {
             if (this.eventDispatcherMap[eventName]) {
                 for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
@@ -55,7 +55,7 @@ class EventDispatcher {
      */
     unbind(eventName, handler) {
         if (typeof eventName !== 'string' || typeof handler !== 'function') {
-            throw new Errror("First parameter is not string and second parameter is not function");
+            throw new SyntaxError("First parameter is not string or second parameter is not function");
         } else {
             if (this.eventDispatcherMap[eventName]) {
                 for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
