@@ -18,7 +18,10 @@ class EventDispatcher {
      * @param {Function} handler. 
      */
     bind(eventName, handler) {
-        if (typeof handler === 'function') {
+
+        if (typeof eventName !== 'string' || typeof handler !== 'function') {
+            throw new Errror("First parameter is not string and second parameter is not function");
+        } else {
             if (this.eventDispatcherMap[eventName]) {
                 this.eventDispatcherMap[eventName].push(handler);
             } else {
@@ -32,11 +35,15 @@ class EventDispatcher {
      *  @param {String} eventName. 
      */
     trigger(eventName) {
-        if (this.eventDispatcherMap[eventName]) {
-            for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
-                try {
-                    this.eventDispatcherMap[eventName][i]();
-                } catch (e) {}
+        if (typeof eventName !== 'string') {
+            throw new Errror("Parameter is not string");
+        } else {
+            if (this.eventDispatcherMap[eventName]) {
+                for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
+                    try {
+                        this.eventDispatcherMap[eventName][i]();
+                    } catch (e) {}
+                }
             }
         }
     }
@@ -47,10 +54,14 @@ class EventDispatcher {
      *  @param {Function} handler.
      */
     unbind(eventName, handler) {
-        if (this.eventDispatcherMap[eventName]) {
-            for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
-                if (this.eventDispatcherMap[eventName][i] === handler) {
-                    this.eventDispatcherMap[eventName].splice(i, 1);
+        if (typeof eventName !== 'string' || typeof handler !== 'function') {
+            throw new Errror("First parameter is not string and second parameter is not function");
+        } else {
+            if (this.eventDispatcherMap[eventName]) {
+                for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
+                    if (this.eventDispatcherMap[eventName][i] === handler) {
+                        this.eventDispatcherMap[eventName].splice(i, 1);
+                    }
                 }
             }
         }
