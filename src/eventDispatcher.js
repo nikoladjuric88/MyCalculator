@@ -1,10 +1,13 @@
 "use strict";
 
+var Assert = require('./assert');
+
 /**
  *  EventDispatcher handles the functions.
  */
-class EventDispatcher {
 
+class EventDispatcher {
+ 
     /**
      *  Constructor.  
      */
@@ -18,13 +21,10 @@ class EventDispatcher {
      * @param {Function} handler. 
      */
     bind(eventName, handler) {
+        
+        Assert.IsString(eventName); 
+        Assert.isFunction(handler); 
 
-        if (typeof eventName !== 'string') {
-            throw new TypeError("Parameter should be string");
-        }
-        if (typeof handler !== 'function') {
-            throw new TypeError("Parameter should be function");
-        }
         if (this.eventDispatcherMap[eventName]) {
             this.eventDispatcherMap[eventName].push(handler);
         } else {
@@ -37,9 +37,9 @@ class EventDispatcher {
      *  @param {String} eventName. 
      */
     trigger(eventName) {
-        if (typeof eventName !== 'string') {
-            throw new TypeError("Parameter should be string");
-        }
+
+        Assert.IsString(eventName); 
+
         if (this.eventDispatcherMap[eventName]) {
             for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
                 try {
@@ -55,12 +55,11 @@ class EventDispatcher {
      *  @param {Function} handler.
      */
     unbind(eventName, handler) {
-        if (typeof eventName !== 'string') {
-            throw new TypeError("Parameter should be string");
-        }
-        if (typeof handler !== 'function') {
-            throw new TypeError("Parameter should be function");
-        }
+     
+       Assert.IsString(eventName); 
+       Assert.isFunction(handler); 
+
+
         if (this.eventDispatcherMap[eventName]) {
             for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
                 if (this.eventDispatcherMap[eventName][i] === handler) {
