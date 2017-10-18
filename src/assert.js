@@ -1,29 +1,47 @@
-function Assert() {
+"use strict";
 
-};
+/**
+ *  Assert checks the parameters.
+ */
 
-Assert.IsString = function(param) {
-    if (param) {
+class Assert {
+
+    /**
+     *  Constructor.  
+     */
+    constructor() {
+
+    }
+
+    /**
+     * Checks if this parameter is a string.
+     * @param {String} param. 
+     */
+    static isString(param) {
         if (typeof param !== 'string') {
-            throw new TypeError("Parameter should be string not a " + typeof param);
+            throw new TypeError("Parameter should be a string not a " + typeof param);
         }
     }
-}
 
-Assert.isNumber = function(param) {
-    if (param) {
-        if (typeof param !== 'number') {
-            throw new TypeError("Parameter should be number not a " + typeof param);
-        }
-    }
-}
-
-Assert.isFunction = function(param) {
-    if (param) {
+    /**
+     * Checks if this parameter is a function.
+     * @param {Function} param. 
+     */
+    static isFunction(param) {
         if (typeof param !== 'function') {
-            throw new TypeError("Parameter should be function not a " + typeof param);
+            throw new TypeError("Parameter should be a function not a " + typeof param);
         }
     }
-}
+
+    /**
+     * Checks is this parameter is a number.
+     * @param {Number} param. 
+     */
+    static isNumber(param) {
+        if (typeof param !== 'number') {
+            throw new TypeError("Parameter should be a number not a " + typeof param);
+        }
+    }
+};
 
 module.exports = Assert;

@@ -7,7 +7,7 @@ var Assert = require('./assert');
  */
 
 class EventDispatcher {
- 
+
     /**
      *  Constructor.  
      */
@@ -21,9 +21,9 @@ class EventDispatcher {
      * @param {Function} handler. 
      */
     bind(eventName, handler) {
-        
-        Assert.IsString(eventName); 
-        Assert.isFunction(handler); 
+
+        Assert.isString(eventName);
+        Assert.isFunction(handler);
 
         if (this.eventDispatcherMap[eventName]) {
             this.eventDispatcherMap[eventName].push(handler);
@@ -38,7 +38,7 @@ class EventDispatcher {
      */
     trigger(eventName) {
 
-        Assert.IsString(eventName); 
+        Assert.isString(eventName);
 
         if (this.eventDispatcherMap[eventName]) {
             for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
@@ -55,10 +55,9 @@ class EventDispatcher {
      *  @param {Function} handler.
      */
     unbind(eventName, handler) {
-     
-       Assert.IsString(eventName); 
-       Assert.isFunction(handler); 
 
+        Assert.isString(eventName);
+        Assert.isFunction(handler);
 
         if (this.eventDispatcherMap[eventName]) {
             for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
