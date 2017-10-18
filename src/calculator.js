@@ -11,6 +11,18 @@ precedenceOps.onclick = function() {
     precedence.precedenceOn();
 }
 
+
+
+var EventDispatcher = require('./eventDispatcher');
+var ed = new EventDispatcher();
+ed.bind('sampleEvent', function() {console.log('hi!')});
+ed.trigger('sampleEvent');
+console.log(ed);
+
+
+
+
+
 var result = 0;
 var screen = new Screen(document.getElementById('screen'));
 var buttons = document.querySelector('.allButtons');

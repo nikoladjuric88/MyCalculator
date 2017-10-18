@@ -7,13 +7,6 @@
 class Assert {
 
     /**
-     *  Constructor.  
-     */
-    constructor() {
-
-    }
-
-    /**
      * Checks if this parameter is a string.
      * @param {String} param. 
      */
