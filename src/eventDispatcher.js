@@ -1,8 +1,11 @@
 "use strict";
 
+var Assert = require('./assert');
+
 /**
  *  EventDispatcher handles the functions.
  */
+
 class EventDispatcher {
 
     /**
@@ -19,12 +22,9 @@ class EventDispatcher {
      */
     bind(eventName, handler) {
 
-        if (typeof eventName !== 'string') {
-            throw new TypeError("Parameter should be string");
-        }
-        if (typeof handler !== 'function') {
-            throw new TypeError("Parameter should be function");
-        }
+        Assert.isString(eventName);
+        Assert.isFunction(handler);
+
         if (this.eventDispatcherMap[eventName]) {
             this.eventDispatcherMap[eventName].push(handler);
         } else {
@@ -37,9 +37,9 @@ class EventDispatcher {
      *  @param {String} eventName. 
      */
     trigger(eventName) {
-        if (typeof eventName !== 'string') {
-            throw new TypeError("Parameter should be string");
-        }
+
+        Assert.isString(eventName);
+
         if (this.eventDispatcherMap[eventName]) {
             for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
                 try {
@@ -55,12 +55,10 @@ class EventDispatcher {
      *  @param {Function} handler.
      */
     unbind(eventName, handler) {
-        if (typeof eventName !== 'string') {
-            throw new TypeError("Parameter should be string");
-        }
-        if (typeof handler !== 'function') {
-            throw new TypeError("Parameter should be function");
-        }
+
+        Assert.isString(eventName);
+        Assert.isFunction(handler);
+
         if (this.eventDispatcherMap[eventName]) {
             for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
                 if (this.eventDispatcherMap[eventName][i] === handler) {
