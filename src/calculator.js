@@ -1,36 +1,36 @@
 "use strict";
 
-var Precedence = require('./precedence');
-var Screen = require('./screen');
-var Memory = require('./memory');
+const Precedence = require('./precedence');
+const Screen = require('./screen');
+const Memory = require('./memory');
 
-var precedence = new Precedence();
-var precedenceOps = document.getElementById('precedenceOps');
+let precedence = new Precedence();
+let precedenceOps = document.getElementById('precedenceOps');
 precedenceOps.onclick = function() {
     document.getElementById('precedenceOps').style.backgroundColor = '#848484';
     precedence.precedenceOn();
 }
 
-var result = 0;
-var screen = new Screen(document.getElementById('screen'));
-var buttons = document.querySelector('.allButtons');
-var numberButtons = buttons.querySelectorAll('.number');
+let result = 0;
+let screen = new Screen(document.getElementById('screen'));
+let buttons = document.querySelector('.allButtons');
+let numberButtons = buttons.querySelectorAll('.number');
 
-for (var i = 0; i <= numberButtons.length - 1; i++) {
+for (let i = 0; i <= numberButtons.length - 1; i++) {
     numberButtons[i].onclick = function() {
-        var buttonDigit = parseInt(this.innerHTML);
+        let buttonDigit = parseInt(this.innerHTML);
         screen.addDigit(buttonDigit);
     }
 };
 
-var operationButtons = buttons.querySelectorAll('.operation');
+let operationButtons = buttons.querySelectorAll('.operation');
 
-for (var i = 0; i < operationButtons.length; i++) {
+for (let i = 0; i < operationButtons.length; i++) {
     var isInitialAction = true;
     var prevOperation;
 
     operationButtons[i].onclick = function() {
-        var currNumber = screen.getNumber();
+        let currNumber = screen.getNumber();
 
         if (isInitialAction) {
             result = currNumber;
@@ -58,13 +58,13 @@ for (var i = 0; i < operationButtons.length; i++) {
             }
         }
         if (precedence.turnOn === true) {
-            var currOperation = this.innerHTML;
+            let currOperation = this.innerHTML;
             screen.setNumber(currNumber);
             precedence.addNumber(currNumber);
             if (currOperation !== '=') {
                 precedence.addOperation(currOperation);
             } else {
-                var outcome = precedence.calculateResult();
+                let outcome = precedence.calculateResult();
                 screen.setNumber(outcome);
             }
         } else {
@@ -75,23 +75,23 @@ for (var i = 0; i < operationButtons.length; i++) {
     }
 }
 
-var memo = new Memory();
-var memoryPlus = document.getElementById('memoryPlus');
+let memo = new Memory();
+let memoryPlus = document.getElementById('memoryPlus');
 memoryPlus.onclick = function() {
-    var currNumber = screen.getNumber();
+    let currNumber = screen.getNumber();
     memo.plus(Number(currNumber));
 }
 
-var memoryMinus = document.getElementById('memoryMinus');
+let memoryMinus = document.getElementById('memoryMinus');
 memoryMinus.onclick = function() {
-    var currNumber = screen.getNumber();
+    let currNumber = screen.getNumber();
     memo.minus(Number(currNumber));
 }
 
-var memoryRecall = document.getElementById('memoryRecall');
+let memoryRecall = document.getElementById('memoryRecall');
 memoryRecall.onclick = function() {
-    var currNumber = screen.getNumber();
-    var callMemory = memo.recall();
+    let currNumber = screen.getNumber();
+    let callMemory = memo.recall();
     if (callMemory === 0) {
         screen.setNumber(currNumber);
     } else {
@@ -99,7 +99,7 @@ memoryRecall.onclick = function() {
     }
 }
 
-var memoryClear = document.getElementById('memoryClear');
+let memoryClear = document.getElementById('memoryClear');
 memoryClear.onclick = function() {
     memo.clear();
 }

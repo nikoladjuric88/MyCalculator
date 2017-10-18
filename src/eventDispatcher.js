@@ -1,6 +1,6 @@
 "use strict";
 
-var Assert = require('./assert');
+const Assert = require('./assert');
 
 /**
  *  EventDispatcher handles the functions.
