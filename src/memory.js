@@ -1,41 +1,47 @@
  "use strict";
 
-/**
- * Memory keeps given result in memory.
- * Constructor. 
- */
- function Memory() {
-     this.num = 0;
- }
+ /**
+  * Memory keeps given result in memory.
+  */
+ class Memory {
 
-/**
- *  Adds a number to the result in the memory.
- *  @param {Number}  number.
- */
- Memory.prototype.Plus = function(number) {
-     this.num += number;
- }
+     /**
+      *  Constructor.  
+      */
+     constructor() {
+         this.num = 0;
+     }
 
-/**
- *  Subtracts a number from the result in the memory.
- *  @param {Number}  number.
- */
- Memory.prototype.Minus = function(number) {
-     this.num += -number;
- }
+     /**
+      *  Adds a number to the result in the memory.
+      *  @param {Number}  number.
+      */
+     plus(number) {
+         this.num += number;
+     }
 
-/**
- * Returns the result from the memory.
- */
- Memory.prototype.Recall = function() {
-     return this.num;
- }
+     /**
+      *  Subtracts a number from the result in the memory.
+      *  @param {Number}  number.
+      */
+     minus(number) {
+         this.num += -number;
+     }
 
-/**
- * Resets the result to zero.
- */
- Memory.prototype.Clear = function() {
-     this.num = 0;
+     /**
+      * Returns the result from the memory.
+      */
+     recall() {
+         return this.num;
+     }
+
+     /**
+      * Resets the result to zero.
+      */
+     clear() {
+         this.num = 0;
+     }
+
  }
 
  module.exports = Memory;

@@ -79,21 +79,19 @@ var memo = new Memory();
 var memoryPlus = document.getElementById('memoryPlus');
 memoryPlus.onclick = function() {
     var currNumber = screen.getNumber();
-    memo.Plus(Number(currNumber));
-    screen.resetOnNextInput();
+    memo.plus(Number(currNumber));
 }
 
 var memoryMinus = document.getElementById('memoryMinus');
 memoryMinus.onclick = function() {
     var currNumber = screen.getNumber();
-    memo.Minus(Number(currNumber));
-    screen.resetOnNextInput();
+    memo.minus(Number(currNumber));
 }
 
 var memoryRecall = document.getElementById('memoryRecall');
 memoryRecall.onclick = function() {
     var currNumber = screen.getNumber();
-    var callMemory = memo.Recall();
+    var callMemory = memo.recall();
     if (callMemory === 0) {
         screen.setNumber(currNumber);
     } else {
@@ -103,5 +101,5 @@ memoryRecall.onclick = function() {
 
 var memoryClear = document.getElementById('memoryClear');
 memoryClear.onclick = function() {
-    var noMemory = memo.Clear();
+    memo.clear();
 }
