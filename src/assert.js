@@ -3,8 +3,7 @@
 /**
  *  Assert checks the parameters.
  */
-
-class Assert {
+export class Assert {
 
     /**
      * Checks if this parameter is a string.
@@ -36,5 +35,3 @@ class Assert {
         }
     }
 };
-
-module.exports = Assert;
