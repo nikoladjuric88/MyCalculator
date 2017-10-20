@@ -9,7 +9,14 @@
       *  Constructor.  
       */
      constructor() {
-         this.num = 0;
+         this._num = 0;
+     }
+
+     /**
+      * Returns the result from the memory.
+      */
+     get number() {
+         return this._num;
      }
 
      /**
@@ -17,7 +24,7 @@
       *  @param {Number}  number.
       */
      plus(number) {
-         this.num += number;
+         this._num += number;
      }
 
      /**
@@ -25,20 +32,13 @@
       *  @param {Number}  number.
       */
      minus(number) {
-         this.num -= number;
-     }
-
-     /**
-      * Returns the result from the memory.
-      */
-     recall() {
-         return this.num;
+         this._num -= number;
      }
 
      /**
       * Resets the result to zero.
       */
      clear() {
-         this.num = 0;
+         this._num = 0;
      }
  }
