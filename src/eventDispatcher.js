@@ -1,12 +1,11 @@
 "use strict";
 
-const Assert = require('./assert');
+import { Assert } from './assert.js';
 
 /**
  *  EventDispatcher handles the functions.
  */
-
-class EventDispatcher {
+export class EventDispatcher {
 
     /**
      *  Constructor.  
@@ -74,7 +73,4 @@ class EventDispatcher {
     unbindAll() {
         this.eventDispatcherMap = {};
     }
-
 }
-
-module.exports = EventDispatcher;

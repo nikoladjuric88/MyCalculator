@@ -3,7 +3,7 @@
  /**
   * Memory keeps given result in memory.
   */
- class Memory {
+ export class Memory {
 
      /**
       *  Constructor.  
@@ -41,7 +41,4 @@
      clear() {
          this.num = 0;
      }
-
  }
-
- module.exports = Memory;

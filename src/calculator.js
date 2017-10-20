@@ -1,8 +1,8 @@
 "use strict";
 
-const Precedence = require('./precedence');
-const Screen = require('./screen');
-const Memory = require('./memory');
+import {Screen} from './screen.js';
+import {Precedence} from './precedence.js';
+import {Memory} from './memory.js';
 
 let precedence = new Precedence();
 let precedenceOps = document.getElementById('precedenceOps');
@@ -30,45 +30,45 @@ for (let i = 0; i < operationButtons.length; i++) {
     var prevOperation;
 
     operationButtons[i].onclick = function() {
-        let currNumber = screen.getNumber();
-
+        let currNumber = screen.number;
+        
         if (isInitialAction) {
             result = currNumber;
             isInitialAction = false;
         } else {
             switch (prevOperation) {
                 case '+':
-                    result = Number(result) + Number(currNumber);
+                    result = result + currNumber;
                     break;
 
                 case '-':
-                    result = Number(result) - Number(currNumber);
+                    result = result - currNumber;
                     break;
 
                 case 'x':
-                    result = Number(result) * Number(currNumber);
+                    result = result * currNumber;
                     break;
 
                 case '/':
-                    result = Number(result) / Number(currNumber);
+                    result = result / currNumber;
                     break;
                 case '=':
                     result = currNumber;
                     break;
             }
         }
-        if (precedence.turnOn === true) {
+        if (precedence.turnOn) {
             let currOperation = this.innerHTML;
-            screen.setNumber(currNumber);
+            screen.number = currNumber;
             precedence.addNumber(currNumber);
             if (currOperation !== '=') {
                 precedence.addOperation(currOperation);
             } else {
                 let outcome = precedence.calculateResult();
-                screen.setNumber(outcome);
+                screen.number = outcome;
             }
         } else {
-            screen.setNumber(result);
+            screen.number = result;
         }
         prevOperation = this.innerHTML;
         screen.resetOnNextInput();
@@ -78,24 +78,24 @@ for (let i = 0; i < operationButtons.length; i++) {
 let memo = new Memory();
 let memoryPlus = document.getElementById('memoryPlus');
 memoryPlus.onclick = function() {
-    let currNumber = screen.getNumber();
-    memo.plus(Number(currNumber));
+    let currNumber = screen.number;
+    memo.plus(currNumber);
 }
 
 let memoryMinus = document.getElementById('memoryMinus');
 memoryMinus.onclick = function() {
-    let currNumber = screen.getNumber();
-    memo.minus(Number(currNumber));
+    let currNumber = screen.number;
+    memo.minus(currNumber);
 }
 
 let memoryRecall = document.getElementById('memoryRecall');
 memoryRecall.onclick = function() {
-    let currNumber = screen.getNumber();
+    let currNumber = screen.number;
     let callMemory = memo.recall();
     if (callMemory === 0) {
-        screen.setNumber(currNumber);
+        screen.number = currNumber;
     } else {
-        screen.setNumber(callMemory);
+        screen.number = callMemory;
     }
 }
 

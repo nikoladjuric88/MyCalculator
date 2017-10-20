@@ -3,8 +3,7 @@
 /**
  *  Precedence determinate priority operations.  
  */
-
-class Precedence {
+export class Precedence {
 
     /**
      *  Constructor.  
@@ -60,9 +59,7 @@ class Precedence {
      * Adds a number.
      * @param {Number}  number. 
      */
-     addNumber(number) {
-        this.numbers.push(Number(number));
-     }
+    addNumber(number) {
+        this.numbers.push(number);
+    }
 }
-
-module.exports = Precedence;

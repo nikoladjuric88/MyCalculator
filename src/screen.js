@@ -3,7 +3,7 @@
 /**
  *  Screen handles calculator screen.  
  */
-class Screen {
+export class Screen {
 
     /**
      *  Constructor.  
@@ -25,15 +25,15 @@ class Screen {
      * Sets the given number on the screen 
      * @param {Number} number
      */
-    setNumber(number) {
+    set number(number) {
         this.element.value = number;
     }
 
     /**
      * Gets the current number from the screen. 
      */
-    getNumber() {
-        return this.element.value;
+    get number() {
+        return Number(this.element.value);
     }
 
     /**
@@ -41,7 +41,7 @@ class Screen {
      * @param {Number} digit.
      */
     addDigit(digit) {
-        if (this.reset === true) {
+        if (this.reset) {
             this.element.value = digit;
             this.reset = false;
         } else {
@@ -50,4 +50,3 @@ class Screen {
     }
 }
 
-module.exports = Screen;
