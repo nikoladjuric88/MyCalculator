@@ -25,7 +25,7 @@
       *  @param {Number}  number.
       */
      minus(number) {
-         this.num += -number;
+         this.num -= number;
      }
 
      /**
