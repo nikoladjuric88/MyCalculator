@@ -6,9 +6,10 @@ import {Memory} from './memory.js';
 
 let precedence = new Precedence();
 let precedenceOps = document.getElementById('precedenceOps');
+let precedenceOn = false;
 precedenceOps.onclick = function() {
     document.getElementById('precedenceOps').style.backgroundColor = '#848484';
-    precedence.precedenceOn();
+      precedenceOn = true;
 }
 
 let result = 0;
@@ -31,12 +32,12 @@ for (let i = 0; i < operationButtons.length; i++) {
 
     operationButtons[i].onclick = function() {
         let currNumber = screen.number;
-        
         if (isInitialAction) {
             result = currNumber;
             isInitialAction = false;
         } else {
             switch (prevOperation) {
+                
                 case '+':
                     result = result + currNumber;
                     break;
@@ -57,7 +58,7 @@ for (let i = 0; i < operationButtons.length; i++) {
                     break;
             }
         }
-        if (precedence.turnOn) {
+        if (precedenceOn) {
             let currOperation = this.innerHTML;
             screen.number = currNumber;
             precedence.addNumber(currNumber);
@@ -91,7 +92,7 @@ memoryMinus.onclick = function() {
 let memoryRecall = document.getElementById('memoryRecall');
 memoryRecall.onclick = function() {
     let currNumber = screen.number;
-    let callMemory = memo.recall();
+    let callMemory = memo.number;
     if (callMemory === 0) {
         screen.number = currNumber;
     } else {

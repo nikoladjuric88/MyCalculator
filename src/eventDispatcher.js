@@ -11,7 +11,7 @@ export class EventDispatcher {
      *  Constructor.  
      */
     constructor() {
-        this.eventDispatcherMap = {};
+        this._eventDispatcherMap = {};
     }
 
     /**
@@ -24,10 +24,10 @@ export class EventDispatcher {
         Assert.isString(eventName);
         Assert.isFunction(handler);
 
-        if (this.eventDispatcherMap[eventName]) {
-            this.eventDispatcherMap[eventName].push(handler);
+        if (this._eventDispatcherMap[eventName]) {
+            this._eventDispatcherMap[eventName].push(handler);
         } else {
-            this.eventDispatcherMap[eventName] = [handler];
+            this._eventDispatcherMap[eventName] = [handler];
         }
     }
 
@@ -39,10 +39,10 @@ export class EventDispatcher {
 
         Assert.isString(eventName);
 
-        if (this.eventDispatcherMap[eventName]) {
-            for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
+        if (this._eventDispatcherMap[eventName]) {
+            for (let i = 0; i < this._eventDispatcherMap[eventName].length; i++) {
                 try {
-                    this.eventDispatcherMap[eventName][i]();
+                    this._eventDispatcherMap[eventName][i]();
                 } catch (e) {}
             }
         }
@@ -58,10 +58,10 @@ export class EventDispatcher {
         Assert.isString(eventName);
         Assert.isFunction(handler);
 
-        if (this.eventDispatcherMap[eventName]) {
-            for (let i = 0; i < this.eventDispatcherMap[eventName].length; i++) {
-                if (this.eventDispatcherMap[eventName][i] === handler) {
-                    this.eventDispatcherMap[eventName].splice(i, 1);
+        if (this._eventDispatcherMap[eventName]) {
+            for (let i = 0; i < this._eventDispatcherMap[eventName].length; i++) {
+                if (this._eventDispatcherMap[eventName][i] === handler) {
+                    this._eventDispatcherMap[eventName].splice(i, 1);
                 }
             }
         }
@@ -71,6 +71,6 @@ export class EventDispatcher {
      *  Unbinds all functions
      */
     unbindAll() {
-        this.eventDispatcherMap = {};
+        this._eventDispatcherMap = {};
     }
 }

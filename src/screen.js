@@ -10,15 +10,15 @@ export class Screen {
      *  @param {String} element.
      */
     constructor(element) {
-        this.element = element;
-        this.reset = false;
+        this._element = element;
+        this._reset = false;
     }
 
     /**
      * Allows a new entry. 
      */
     resetOnNextInput() {
-        this.reset = true;
+        this._reset = true;
     }
 
     /**
@@ -26,14 +26,14 @@ export class Screen {
      * @param {Number} number
      */
     set number(number) {
-        this.element.value = number;
+        this._element.value = number;
     }
 
     /**
      * Gets the current number from the screen. 
      */
     get number() {
-        return Number(this.element.value);
+        return Number(this._element.value);
     }
 
     /**
@@ -41,11 +41,11 @@ export class Screen {
      * @param {Number} digit.
      */
     addDigit(digit) {
-        if (this.reset) {
-            this.element.value = digit;
-            this.reset = false;
+        if (this._reset) {
+            this._element.value = digit;
+            this._reset = false;
         } else {
-            this.element.value += digit;
+            this._element.value += digit;
         }
     }
 }
