@@ -33,7 +33,7 @@ export class Screen {
      * Gets the current number from the screen. 
      */
     get number() {
-        return Number(this._element.value);
+        return this._element.value;
     }
 
     /**
