@@ -35,14 +35,15 @@ export class EventDispatcher {
      *  Triggers a given event.
      *  @param {String} eventName. 
      */
-    trigger(eventName) {
+    trigger(eventName, num) {
 
         Assert.isString(eventName);
+        Assert.isNumber(num);
 
         if (this._eventDispatcherMap[eventName]) {
             for (let i = 0; i < this._eventDispatcherMap[eventName].length; i++) {
                 try {
-                    this._eventDispatcherMap[eventName][i]();
+                    this._eventDispatcherMap[eventName][i](num);
                 } catch (e) {}
             }
         }
