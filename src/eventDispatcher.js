@@ -38,6 +38,7 @@ export class EventDispatcher {
     trigger(eventName, num) {
 
         Assert.isString(eventName);
+        Assert.isNumber(num);
 
         if (this._eventDispatcherMap[eventName]) {
             for (let i = 0; i < this._eventDispatcherMap[eventName].length; i++) {
