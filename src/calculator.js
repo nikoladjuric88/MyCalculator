@@ -28,7 +28,6 @@ for (let i = 0; i < operationButtons.length; i++) {
     var prevOperation;
 
     operationButtons[i].onclick = function() {
-        screen.resetOnNextInput();
         let currNumber = screen.number;
         if (isInitialAction) {
             result = currNumber;
@@ -63,32 +62,36 @@ for (let i = 0; i < operationButtons.length; i++) {
             if (currOperation !== '=') {
                 precedence.addOperation(currOperation);
             } else {
-                screen.number = precedence.calculateResult();
+                let outcome = precedence.calculateResult();
+                screen.number = outcome;
             }
         } else {
             screen.number = result;
         }
         prevOperation = this.innerHTML;
+        screen.resetOnNextInput();
     }
 }
 
 
 
-let memory = new Memory();
+let memo = new Memory();
 let memoryPlus = document.getElementById('memoryPlus');
 memoryPlus.onclick = function() {
-    memory.plus(screen.number);
+    let currNumber = screen.number;
+    memo.plus(currNumber);
 }
 
 let memoryMinus = document.getElementById('memoryMinus');
 memoryMinus.onclick = function() {
-    memory.minus(screen.number);
+    let currNumber = screen.number;
+    memo.minus(currNumber);
 }
 
 let memoryRecall = document.getElementById('memoryRecall');
 memoryRecall.onclick = function() {
     let currNumber = screen.number;
-    let callMemory = memory.number;
+    let callMemory = memo.number;
     if (callMemory === 0) {
         screen.number = currNumber;
     } else {
@@ -98,5 +101,5 @@ memoryRecall.onclick = function() {
 
 let memoryClear = document.getElementById('memoryClear');
 memoryClear.onclick = function() {
-    memory.clear();
+    memo.clear();
 }
