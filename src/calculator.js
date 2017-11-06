@@ -33,6 +33,7 @@ for (let i = 0; i < operationButtons.length; i++) {
             result = currNumber;
             isInitialAction = false;
         } else {
+            
             switch (prevOperation) {
                 case '+':
                     result = result + currNumber;
@@ -72,8 +73,6 @@ for (let i = 0; i < operationButtons.length; i++) {
         screen.resetOnNextInput();
     }
 }
-
-
 
 let memo = new Memory();
 let memoryPlus = document.getElementById('memoryPlus');
