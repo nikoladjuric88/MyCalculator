@@ -34,7 +34,7 @@ for (let i = 0; i < operationButtons.length; i++) {
             isInitialAction = false;
         } else {
             switch (prevOperation) {
-                
+
                 case '+':
                     result = result + currNumber;
                     break;
@@ -55,7 +55,6 @@ for (let i = 0; i < operationButtons.length; i++) {
                     break;
             }
         }
-
         if (precedenceOn) {
             let currOperation = this.innerHTML;
             screen.number = currNumber;
