@@ -33,8 +33,8 @@ for (let i = 0; i < operationButtons.length; i++) {
             result = currNumber;
             isInitialAction = false;
         } else {
-            
             switch (prevOperation) {
+                
                 case '+':
                     result = result + currNumber;
                     break;
