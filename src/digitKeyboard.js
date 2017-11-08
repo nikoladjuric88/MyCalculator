@@ -12,22 +12,22 @@ export class DigitKeyboard extends EventDispatcher {
      */
     constructor() {
         super();
-        this.bindEvents();
+        this._bindEvents();
     }
 
     /**
-     * Sets entered number on the screen.
+     * Triggers binded event with a given value.
      */
-    bindEvents() {
+    _bindEvents() {
         let buttons = document.querySelector('.allButtons');
         let numberButtons = buttons.querySelectorAll('.number');
 
         for (let i = 0; i < numberButtons.length; i++) {
             let self = this;
-            numberButtons[i].onclick = function() {
-                let buttonDigit = Number(this.innerHTML);
+            numberButtons[i].addEventListener("click", function() {
+                let buttonDigit = this.innerHTML;
                 self.trigger('DigitKeyboard.KEY_PRESSED', buttonDigit);
-            }
-        };
+            })         
+        }
     }
 }
