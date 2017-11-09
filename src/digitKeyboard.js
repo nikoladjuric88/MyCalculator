@@ -16,7 +16,7 @@ export class DigitKeyboard extends EventDispatcher {
     }
 
     /**
-     * Triggers binded event with a given value.
+     * Binds event listeners to digit buttons.
      */
     _bindEvents() {
         let buttons = document.querySelector('.allButtons');
@@ -25,9 +25,9 @@ export class DigitKeyboard extends EventDispatcher {
         for (let i = 0; i < numberButtons.length; i++) {
             let self = this;
             numberButtons[i].addEventListener("click", function() {
-                let buttonDigit = this.innerHTML;
-                self.trigger('DigitKeyboard.KEY_PRESSED', buttonDigit);
-            })         
+                let buttonDigit = event.target.textContent;
+                self.trigger('DigitKeyboard.KEY_PRESSED').bind(this, buttonDigit)();
+            })
         }
     }
 }
