@@ -36,14 +36,14 @@ export class EventDispatcher {
      * @param {String} eventName. 
      * @param {Value} value. 
      */
-    trigger(eventName) {
+    trigger(eventName, value) {
 
-        Assert.isString(eventName);
+        Assert.isString(eventName, value);
 
         if (this._eventDispatcherMap[eventName]) {
             for (let i = 0; i < this._eventDispatcherMap[eventName].length; i++) {
                 try {
-                   return this._eventDispatcherMap[eventName][i];
+                  return  this._eventDispatcherMap[eventName][i](value);
                 } catch (e) {}
             }
         }
