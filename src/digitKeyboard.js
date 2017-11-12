@@ -24,11 +24,9 @@ export class DigitKeyboard extends EventDispatcher {
 
         for (let i = 0; i < numberButtons.length; i++) {
             numberButtons[i].addEventListener("click", event => {
-                 let buttonDigit = Number(event.target.textContent);
-                 this.trigger('DigitKeyboard.KEY_PRESSED', buttonDigit)
-            }
-                   
-            );
+                let buttonDigit = Number(event.target.textContent);
+                this.trigger('DigitKeyboard.KEY_PRESSED', buttonDigit)
+            });
         }
     }
 }
