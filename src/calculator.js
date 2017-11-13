@@ -4,7 +4,7 @@ import { Screen } from './screen.js';
 import { Precedence } from './precedence.js';
 import { Memory } from './memory.js';
 import { DigitKeyboard } from './digitKeyboard.js';
-import { DigitKeyboardConstants } from './digitKeyboard.js';
+import { DigitKeyboardEvents } from './digitKeyboard.js';
 
 let precedence = new Precedence();
 let precedenceOps = document.getElementById('precedenceOps');
@@ -19,7 +19,7 @@ let screen = new Screen(document.getElementById('screen'));
 let buttons = document.querySelector('.allButtons');
 
 let digitKeyboard = new DigitKeyboard();
-digitKeyboard.bind(DigitKeyboardConstants.KEY_PRESSED, digit => { screen.addDigit(digit); });
+digitKeyboard.bind(DigitKeyboardEvents.KEY_PRESSED, digit => { screen.addDigit(digit); });
 
 let operationButtons = buttons.querySelectorAll('.operation');
 

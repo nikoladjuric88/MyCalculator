@@ -2,8 +2,8 @@
 
 import { EventDispatcher } from './eventDispatcher.js';
 
-export const DigitKeyboardConstants = {
-    "KEY_PRESSED": 'KEY_PRESSED',
+export const DigitKeyboardEvents = {
+    KEY_PRESSED: 'keyPressed',
 };
 
 /**
@@ -29,7 +29,7 @@ export class DigitKeyboard extends EventDispatcher {
         for (let i = 0; i < numberButtons.length; i++) {
             numberButtons[i].addEventListener("click", event => {
                 let buttonDigit = Number(event.target.textContent);
-                this.trigger(DigitKeyboardConstants.KEY_PRESSED, buttonDigit)
+                this.trigger(DigitKeyboardEvents.KEY_PRESSED, buttonDigit)
             });
         }
     }
