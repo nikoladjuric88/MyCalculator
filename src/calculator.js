@@ -1,28 +1,25 @@
 "use strict";
 
-import {Screen} from './screen.js';
-import {Precedence} from './precedence.js';
-import {Memory} from './memory.js';
+import { Screen } from './screen.js';
+import { Precedence } from './precedence.js';
+import { Memory } from './memory.js';
+import { DigitKeyboard } from './digitKeyboard.js';
+import { DigitKeyboardEvents } from './digitKeyboard.js';
 
 let precedence = new Precedence();
 let precedenceOps = document.getElementById('precedenceOps');
 let precedenceOn = false;
 precedenceOps.onclick = function() {
     document.getElementById('precedenceOps').style.backgroundColor = '#848484';
-      precedenceOn = true;
+    precedenceOn = true;
 }
 
 let result = 0;
 let screen = new Screen(document.getElementById('screen'));
 let buttons = document.querySelector('.allButtons');
-let numberButtons = buttons.querySelectorAll('.number');
 
-for (let i = 0; i <= numberButtons.length - 1; i++) {
-    numberButtons[i].onclick = function() {
-        let buttonDigit = parseInt(this.innerHTML);
-        screen.addDigit(buttonDigit);
-    }
-};
+let digitKeyboard = new DigitKeyboard();
+digitKeyboard.bind(DigitKeyboardEvents.KEY_PRESSED, digit => { screen.addDigit(digit); });
 
 let operationButtons = buttons.querySelectorAll('.operation');
 
@@ -37,7 +34,7 @@ for (let i = 0; i < operationButtons.length; i++) {
             isInitialAction = false;
         } else {
             switch (prevOperation) {
-                
+
                 case '+':
                     result = result + currNumber;
                     break;
