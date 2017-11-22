@@ -2,9 +2,6 @@
 
 import { EventDispatcher } from '../eventDispatcher.js';
 
-var viewTemplate = require('./view.hbs');
-var stringToDom = require('string-to-dom');
-
 export const DigitKeyboardEvents = {
     KEY_PRESSED: 'keyPressed',
 };
@@ -26,6 +23,8 @@ export class DigitKeyboard extends EventDispatcher {
      * Binds event listeners to digit buttons.
      */
     _bindEvents() {
+        let viewTemplate = require('./view.hbs');
+        let stringToDom = require('string-to-dom');
         let viewString = viewTemplate();
         this.view = stringToDom(viewString);
         let numberButtons = this.view.querySelectorAll('.number');
@@ -38,12 +37,3 @@ export class DigitKeyboard extends EventDispatcher {
         }
     } 
 }
-
-
-
-
-
-
-
-
-
