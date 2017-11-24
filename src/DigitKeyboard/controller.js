@@ -1,6 +1,8 @@
 "use strict";
 
 import { EventDispatcher } from '../eventDispatcher.js';
+import digits from './view.hbs';
+import stringToDom from '../../node_modules/string-to-dom';
 
 export const DigitKeyboardEvents = {
     KEY_PRESSED: 'keyPressed',
@@ -23,9 +25,7 @@ export class DigitKeyboard extends EventDispatcher {
      * Binds event listeners to digit buttons.
      */
     _bindEvents() {
-        let viewTemplate = require('./view.hbs');
-        let stringToDom = require('string-to-dom');
-        let viewString = viewTemplate();
+        let viewString = digits();
         this.view = stringToDom(viewString);
         let numberButtons = this.view.querySelectorAll('.number');
     
