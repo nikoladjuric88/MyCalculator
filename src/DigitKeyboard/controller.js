@@ -2,7 +2,7 @@
 
 import { EventDispatcher } from '../eventDispatcher.js';
 import viewTemplate from './view.hbs';
-import stringToDom from '../../node_modules/string-to-dom';
+import stringToDom from 'string-to-dom';
 
 export const DigitKeyboardEvents = {
     KEY_PRESSED: 'keyPressed',
