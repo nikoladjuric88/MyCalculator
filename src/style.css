@@ -47,7 +47,7 @@
     padding-left: 1px;
 }
 
-.allButtons {
+#allButtons {
     width: 152px;
     height: 260px;
     background: linear-gradient(#7F8C8D, #CACFD2);

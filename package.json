@@ -11,6 +11,9 @@
     "npm": "^5.4.2"
   },
   "browserify": {
-    "transform": [["babelify", {"presets": ["es2015"]}]]
+    "transform": [
+      ["babelify", {"presets": ["es2015"]} ],
+      "hbsfy"
+    ]
   }
 }

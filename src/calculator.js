@@ -3,8 +3,8 @@
 import { Screen } from './screen.js';
 import { Precedence } from './precedence.js';
 import { Memory } from './memory.js';
-import { DigitKeyboard } from './digitKeyboard.js';
-import { DigitKeyboardEvents } from './digitKeyboard.js';
+import { DigitKeyboard } from './DigitKeyboard/controller.js';
+import { DigitKeyboardEvents } from './DigitKeyboard/controller.js';
 
 let precedence = new Precedence();
 let precedenceOps = document.getElementById('precedenceOps');
@@ -16,10 +16,12 @@ precedenceOps.onclick = function() {
 
 let result = 0;
 let screen = new Screen(document.getElementById('screen'));
-let buttons = document.querySelector('.allButtons');
+let buttons = document.querySelector('#allButtons');
 
 let digitKeyboard = new DigitKeyboard();
+document.body.append(digitKeyboard.view);
 digitKeyboard.bind(DigitKeyboardEvents.KEY_PRESSED, digit => { screen.addDigit(digit); });
+
 
 let operationButtons = buttons.querySelectorAll('.operation');
 
