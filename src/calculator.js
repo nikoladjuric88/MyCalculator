@@ -57,12 +57,6 @@ operationKeyboard.bind(OperationKeyboardEvents.GET_OPERATION, (ops) => {
         prevOperation = ops;
     });
 
-
-
-
-
-
-
 let memo = new Memory();
 let memoryPlus = document.getElementById('memoryPlus');
 memoryPlus.onclick = function() {

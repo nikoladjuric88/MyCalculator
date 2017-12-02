@@ -5,9 +5,8 @@ import viewTemplate from './view.hbs';
 import stringToDom from 'string-to-dom';
 
 export const OperationKeyboardEvents = {
-    GET_OPERATION: 'getOperation',
     RESET_ON_NEXT_INPUT: 'resetOnNextInput',
-    SET_RESULT: 'setResult'
+    GET_OPERATION: 'getOperation'
 };
 
 export class OperationKeyboard extends EventDispatcher {
