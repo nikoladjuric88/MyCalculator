@@ -17,7 +17,6 @@ export class OperationKeyboard extends EventDispatcher {
     constructor() {
         super();
         this._bindOpsEvents();
-        this.operation = null;
     }
     /**
      * Binds event listeners to operation buttons.
@@ -29,8 +28,8 @@ export class OperationKeyboard extends EventDispatcher {
         for (let i = 0; i < operationButtons.length; i++) {
             operationButtons[i].addEventListener("click", (event) => {
                 this.trigger(OperationKeyboardEvents.RESET_ON_NEXT_INPUT)
-                this.operation = event.target.textContent;
-                this.trigger(OperationKeyboardEvents.GET_OPERATION, this.operation);
+                let operation = event.target.textContent;
+                this.trigger(OperationKeyboardEvents.GET_OPERATION, operation);
             })
         }
     }
