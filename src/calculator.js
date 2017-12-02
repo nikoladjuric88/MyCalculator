@@ -23,18 +23,21 @@ digitKeyboard.bind(DigitKeyboardEvents.KEY_PRESSED, digit => { screen.addDigit(d
 let operationKeyboard = new OperationKeyboard();
 document.body.append(operationKeyboard.view);
 
+
+operationKeyboard.bind(OperationKeyboardEvents.RESET_ON_NEXT_INPUT, () => { screen.resetOnNextInput(); });
+operationKeyboard.bind(OperationKeyboardEvents.GET_OPERATION, ops => { calculate(ops) });
+
 let screen = new Screen(document.getElementById('screen'));
+let prevOperation;
 let result = 0;
 let isInitialAction = true;
-let prevOperation;
-operationKeyboard.bind(OperationKeyboardEvents.RESET_ON_NEXT_INPUT, () => { screen.resetOnNextInput(); });
-operationKeyboard.bind(OperationKeyboardEvents.GET_OPERATION, (ops) => {
-        
-        let currNumber = screen.number;
+
+let calculate = ops => { 
+    let currNumber = screen.number;
         if (isInitialAction) {
             result = currNumber;
             isInitialAction = false;
-        } else {
+        } else {        
             switch (prevOperation) {
                 case '+':
                     result = result + currNumber;
@@ -55,7 +58,7 @@ operationKeyboard.bind(OperationKeyboardEvents.GET_OPERATION, (ops) => {
         }
         screen.number = result;
         prevOperation = ops;
-    });
+   }  
 
 let memo = new Memory();
 let memoryPlus = document.getElementById('memoryPlus');
