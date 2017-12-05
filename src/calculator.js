@@ -2,9 +2,9 @@
 
 import { Screen } from './screen.js';
 import { Precedence } from './precedence.js';
-import { Memory } from './memory.js';
 import { DigitKeyboard } from './DigitKeyboard/controller.js';
 import { DigitKeyboardEvents } from './DigitKeyboard/controller.js';
+import { MemoryKeyboard } from './MemoryKeyboard/controller.js';
 
 let precedence = new Precedence();
 let precedenceOps = document.getElementById('precedenceOps');
@@ -105,8 +105,7 @@ memoryClear.onclick = function() {
     memo.clear();
 }
 */
-import { viewString } from './DigitKeyboard/controller.js';
-import { view } from './DigitKeyboard/controller.js';
+let memoryKeyboard = new MemoryKeyboard();
 
-console.log(viewString);
-console.log(view);
+console.log(memoryKeyboard);
+
