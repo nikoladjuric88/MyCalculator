@@ -5,6 +5,7 @@ import { Precedence } from './precedence.js';
 import { DigitKeyboard } from './DigitKeyboard/controller.js';
 import { DigitKeyboardEvents } from './DigitKeyboard/controller.js';
 import { MemoryKeyboard } from './MemoryKeyboard/controller.js';
+import { MemoryButtons } from './MemoryKeyboard/controller.js';
 
 let precedence = new Precedence();
 let precedenceOps = document.getElementById('precedenceOps');
@@ -75,37 +76,9 @@ for (let i = 0; i < operationButtons.length; i++) {
     }
 }
 
-/*
-let memo = new Memory();
-let memoryPlus = document.getElementById('memoryPlus');
-memoryPlus.onclick = function() {
-    let currNumber = screen.number;
-    memo.plus(currNumber);
-}
-
-let memoryMinus = document.getElementById('memoryMinus');
-memoryMinus.onclick = function() {
-    let currNumber = screen.number;
-    memo.minus(currNumber);
-}
-
-let memoryRecall = document.getElementById('memoryRecall');
-memoryRecall.onclick = function() {
-    let currNumber = screen.number;
-    let callMemory = memo.number;
-    if (callMemory === 0) {
-        screen.number = currNumber;
-    } else {
-        screen.number = callMemory;
-    }
-}
-
-let memoryClear = document.getElementById('memoryClear');
-memoryClear.onclick = function() {
-    memo.clear();
-}
-*/
 let memoryKeyboard = new MemoryKeyboard();
-
-console.log(memoryKeyboard);
-
+document.body.append(memoryKeyboard.view);
+memoryKeyboard.bind(MemoryButtons.PLUS, () => {memoryKeyboard.memoryPlus(screen.number)} );
+memoryKeyboard.bind(MemoryButtons.MINUS, () => {memoryKeyboard.memoryMinus(screen.number)} );
+memoryKeyboard.bind(MemoryButtons.RECALL, () => {screen.number = memoryKeyboard.memoryRecall()} );
+memoryKeyboard.bind(MemoryButtons.CLEAR, () => {memoryKeyboard.memoryClear()} );
