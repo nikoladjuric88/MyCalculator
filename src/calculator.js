@@ -7,6 +7,7 @@ import { DigitKeyboard } from './DigitKeyboard/controller.js';
 import { DigitKeyboardEvents } from './DigitKeyboard/controller.js';
 import { OperationKeyboard } from './OperationKeyboard/controller.js';
 import { OperationKeyboardEvents } from './OperationKeyboard/controller.js';
+import { Operations } from './OperationKeyboard/controller.js';
 
 let precedence = new Precedence();
 let precedenceOps = document.getElementById('precedenceOps');
@@ -40,19 +41,19 @@ let calculate = ops => {
         isInitialAction = false;
     } else {
         switch (prevOperation) {
-            case '+':
+            case Operations.ADDITION:
                 result = result + currNumber;
                 break;
-            case '-':
+            case Operations.SUBSTRACTION:
                 result = result - currNumber;
                 break;
-            case 'x':
+            case Operations.MULTIPLICATION:
                 result = result * currNumber;
                 break;
-            case '/':
+            case Operations.DIVISION:
                 result = result / currNumber;
                 break;
-            case '=':
+            case Operations.EQUALLS:
                 result = currNumber;
                 break;
         }

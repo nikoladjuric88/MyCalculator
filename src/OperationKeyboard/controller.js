@@ -8,6 +8,14 @@ export const OperationKeyboardEvents = {
     OPERATION_SELECTED: 'operationSelected'
 };
 
+export const Operations = {
+    ADDITION: '+',
+    SUBSTRACTION: '-',
+    DIVISION: '/',
+    MULTIPLICATION: 'x',
+    EQUALLS: '='
+};
+
 export class OperationKeyboard extends EventDispatcher {
 
     /**
@@ -24,9 +32,14 @@ export class OperationKeyboard extends EventDispatcher {
         let viewString = viewTemplate();
         this.view = stringToDom(viewString);
         let operationButtons = this.view.querySelectorAll('.operation');
+        let operation = null;
         for (let i = 0; i < operationButtons.length; i++) {
             operationButtons[i].addEventListener("click", (event) => {
-                let operation = event.target.textContent;
+                for(let j in Operations) {
+                    if(Operations[j] === event.target.textContent) {
+                        operation = Operations[j];
+                    }
+                }
                 this.trigger(OperationKeyboardEvents.OPERATION_SELECTED, operation);
             })
         }
