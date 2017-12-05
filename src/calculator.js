@@ -75,6 +75,7 @@ for (let i = 0; i < operationButtons.length; i++) {
     }
 }
 
+/*
 let memo = new Memory();
 let memoryPlus = document.getElementById('memoryPlus');
 memoryPlus.onclick = function() {
@@ -103,5 +104,9 @@ let memoryClear = document.getElementById('memoryClear');
 memoryClear.onclick = function() {
     memo.clear();
 }
+*/
+import { viewString } from './DigitKeyboard/controller.js';
+import { view } from './DigitKeyboard/controller.js';
 
-console.log('a');
+console.log(viewString);
+console.log(view);
