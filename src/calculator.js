@@ -103,3 +103,5 @@ let memoryClear = document.getElementById('memoryClear');
 memoryClear.onclick = function() {
     memo.clear();
 }
+
+console.log('a');
