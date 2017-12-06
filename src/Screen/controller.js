@@ -4,6 +4,10 @@ import viewTemplate from './view.hbs';
 import stringToDom from 'string-to-dom';
 
 export class Screen {
+
+    /**
+     *  Constructor.  
+     */
     constructor() {
         let viewString = viewTemplate();
         this.view = stringToDom(viewString);
