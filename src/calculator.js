@@ -78,7 +78,7 @@ for (let i = 0; i < operationButtons.length; i++) {
 
 let memoryKeyboard = new MemoryKeyboard();
 document.body.append(memoryKeyboard.view);
-memoryKeyboard.bind(MemoryButtons.PLUS, () => {memoryKeyboard.memoryPlus(screen.number)} );
-memoryKeyboard.bind(MemoryButtons.MINUS, () => {memoryKeyboard.memoryMinus(screen.number)} );
-memoryKeyboard.bind(MemoryButtons.RECALL, () => {screen.number = memoryKeyboard.memoryRecall()} );
-memoryKeyboard.bind(MemoryButtons.CLEAR, () => {memoryKeyboard.memoryClear()} );
+memoryKeyboard.bind(MemoryButtons.PLUS, () => { memoryKeyboard.memoryPlus(screen.number) });
+memoryKeyboard.bind(MemoryButtons.MINUS, () => { memoryKeyboard.memoryMinus(screen.number) });
+memoryKeyboard.bind(MemoryButtons.RECALL, () => { screen.number = memoryKeyboard.memoryRecall() });
+memoryKeyboard.bind(MemoryButtons.CLEAR, () => { memoryKeyboard.memoryClear() });
