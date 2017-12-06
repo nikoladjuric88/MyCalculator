@@ -16,6 +16,9 @@ export const Operations = {
     EQUALLS: '='
 };
 
+/**
+ *  OperationKeyboard determinates the operation when it's clicked.
+ */
 export class OperationKeyboard extends EventDispatcher {
 
     /**
@@ -32,15 +35,15 @@ export class OperationKeyboard extends EventDispatcher {
         let viewString = viewTemplate();
         this.view = stringToDom(viewString);
         let operationButtons = this.view.querySelectorAll('.operation');
-        let operation = null;
+        let currOperation = null;
         for (let i = 0; i < operationButtons.length; i++) {
             operationButtons[i].addEventListener("click", (event) => {
-                for(let j in Operations) {
-                    if(Operations[j] === event.target.textContent) {
-                        operation = Operations[j];
+                for (let operation in Operations) {
+                    if (Operations[operation] === event.target.textContent) {
+                        currOperation = Operations[operation];
                     }
                 }
-                this.trigger(OperationKeyboardEvents.OPERATION_SELECTED, operation);
+                this.trigger(OperationKeyboardEvents.OPERATION_SELECTED, currOperation);
             })
         }
     }
