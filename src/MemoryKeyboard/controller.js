@@ -61,7 +61,7 @@ export class MemoryKeyboard extends EventDispatcher {
     _bindMemoryEvents() {
         let memoBtns = this.view.querySelectorAll('.memo');
 
-        for (var i = 0; i < memoBtns.length; i++) {
+        for (let i = 0; i < memoBtns.length; i++) {
             memoBtns[i].addEventListener('click', (event) => {
                 for (let btn in MemoryButtons) {
                     if (MemoryButtons[btn] === event.target.textContent) {
