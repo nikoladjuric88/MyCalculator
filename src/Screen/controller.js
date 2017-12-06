@@ -1,16 +1,10 @@
-"use strict";
+import viewTemplate from './view.hbs';
+import stringToDom from 'string-to-dom';
 
-/**
- *  Screen handles calculator screen.  
- */
 export class Screen {
-
-    /**
-     *  Constructor.  
-     *  @param {String} element.
-     */
-    constructor(element) {
-        this._element = element;
+    constructor() {
+        let viewString = viewTemplate();
+        this.view = stringToDom(viewString);
         this._reset = false;
     }
 
@@ -26,14 +20,14 @@ export class Screen {
      * @param {Number} number
      */
     set number(number) {
-        this._element.value = number;
+        this.view.value = number;
     }
 
     /**
      * Gets the current number from the screen. 
      */
     get number() {
-        return Number(this._element.value);
+        return Number(this.view.value);
     }
 
     /**
@@ -42,11 +36,10 @@ export class Screen {
      */
     addDigit(digit) {
         if (this._reset) {
-            this._element.value = digit;
+            this.view.value = digit;
             this._reset = false;
         } else {
-            this._element.value += digit;
+            this.view.value += digit;
         }
     }
 }
-
