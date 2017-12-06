@@ -3,12 +3,15 @@ import viewTemplate from './view.hbs';
 import stringToDom from 'string-to-dom';
 
 export const MemoryButtons = {
-    PLUS: 'plus',
-    MINUS: 'minus',
-    RECALL: 'recall',
-    CLEAR: 'clear'
+    PLUS: 'M+',
+    MINUS: 'M-',
+    RECALL: 'MR',
+    CLEAR: 'MC'
 };
 
+/**
+ * MemoryKeyboard works with given result in memory.
+ */
 export class MemoryKeyboard extends EventDispatcher {
 
     /**
@@ -19,53 +22,53 @@ export class MemoryKeyboard extends EventDispatcher {
         let viewString = viewTemplate();
         this.view = stringToDom(viewString);
         this._num = 0;
-        this._bindEventMemoryPlus();
-        this._bindEventMemoryMinus();
-        this._bindEventMemoryRecall();
-        this._bindEventmemoryClear();
+        this._bindMemoryEvents();
     }
 
+    /**
+     *  Adds a number to the result in the memory.
+     *  @param {Number}  number.
+     */
     memoryPlus(value) {
         this._num += value;
     }
 
-    _bindEventMemoryPlus() {
-        let memoPlusBtn = this.view.querySelector('#memoryPlus');
-        memoPlusBtn.addEventListener('click', (e) => {
-            this.trigger(MemoryButtons.PLUS)
-        });
-    }
-
+    /**
+     *  Subtracts a number from the result in the memory.
+     *  @param {Number}  number.
+     */
     memoryMinus(value) {
         this._num -= value;
     }
 
-    _bindEventMemoryMinus() {
-        let memoMinusBtn = this.view.querySelector('#memoryMinus');
-        memoMinusBtn.addEventListener('click', (e) => {
-            this.trigger(MemoryButtons.MINUS)
-        });
-    }
-
+    /**
+     * Returns the result from the memory.
+     */
     memoryRecall() {
         return this._num;
     }
 
-    _bindEventMemoryRecall() {
-        let memoryRecallBtn = this.view.querySelector('#memoryRecall');
-        memoryRecallBtn.addEventListener('click', (e) => {
-            this.trigger(MemoryButtons.RECALL)
-        });
-    }
-
+    /**
+     * Resets the result to zero.
+     */
     memoryClear() {
         this._num = 0;
     }
 
-    _bindEventmemoryClear() {
-        let memoryClearBtn = this.view.querySelector('#memoryClear');
-        memoryClearBtn.addEventListener('click', (e) => {
-            this.trigger(MemoryButtons.CLEAR)
-        });
+    /**
+     * Binds event listeners to memory buttons.
+     */
+    _bindMemoryEvents() {
+        let memoBtns = this.view.querySelectorAll('.memo');
+
+        for (var i = 0; i < memoBtns.length; i++) {
+            memoBtns[i].addEventListener('click', (event) => {
+                for (let btn in MemoryButtons) {
+                    if (MemoryButtons[btn] === event.target.textContent) {
+                        this.trigger(MemoryButtons[btn])
+                    }
+                }
+            })
+        }
     }
 }
