@@ -27,7 +27,7 @@ export class MemoryKeyboard extends EventDispatcher {
 
     /**
      *  Adds a number to the result in the memory.
-     *  @param {Number}  number.
+     *  @param {Number} value.
      */
     memoryPlus(value) {
         this._num += value;
@@ -35,7 +35,7 @@ export class MemoryKeyboard extends EventDispatcher {
 
     /**
      *  Subtracts a number from the result in the memory.
-     *  @param {Number}  number.
+     *  @param {Number} value.
      */
     memoryMinus(value) {
         this._num -= value;
