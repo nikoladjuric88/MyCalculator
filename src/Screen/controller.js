@@ -1,3 +1,5 @@
+"use strict";
+
 import viewTemplate from './view.hbs';
 import stringToDom from 'string-to-dom';
 
