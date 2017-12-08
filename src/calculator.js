@@ -4,6 +4,9 @@ import { Screen } from './screen.js';
 import { Precedence } from './precedence.js';
 import { DigitKeyboard } from './DigitKeyboard/controller.js';
 import { DigitKeyboardEvents } from './DigitKeyboard/controller.js';
+import { OperationKeyboard } from './OperationKeyboard/controller.js';
+import { OperationKeyboardEvents } from './OperationKeyboard/controller.js';
+import { Operations } from './OperationKeyboard/controller.js';
 
 import { MemoryKeyboard } from './MemoryKeyboard/controller.js';
 import { MemoryButtons } from './MemoryKeyboard/controller.js';
@@ -16,65 +19,49 @@ precedenceOps.onclick = function() {
     precedenceOn = true;
 }
 
-let result = 0;
-let screen = new Screen(document.getElementById('screen'));
-let buttons = document.querySelector('#allButtons');
-
 let digitKeyboard = new DigitKeyboard();
 document.body.append(digitKeyboard.view);
 digitKeyboard.bind(DigitKeyboardEvents.KEY_PRESSED, digit => { screen.addDigit(digit); });
 
+let operationKeyboard = new OperationKeyboard();
+document.body.append(operationKeyboard.view);
 
-let operationButtons = buttons.querySelectorAll('.operation');
+operationKeyboard.bind(OperationKeyboardEvents.OPERATION_SELECTED, ops => {
+    screen.resetOnNextInput();
+    calculate(ops);
+});
 
-for (let i = 0; i < operationButtons.length; i++) {
-    var isInitialAction = true;
-    var prevOperation;
+let screen = new Screen(document.getElementById('screen'));
+let prevOperation;
+let result = 0;
+let isInitialAction = true;
 
-    operationButtons[i].onclick = function() {
-        let currNumber = screen.number;
-        if (isInitialAction) {
-            result = currNumber;
-            isInitialAction = false;
-        } else {
-            switch (prevOperation) {
-
-                case '+':
-                    result = result + currNumber;
-                    break;
-
-                case '-':
-                    result = result - currNumber;
-                    break;
-
-                case 'x':
-                    result = result * currNumber;
-                    break;
-
-                case '/':
-                    result = result / currNumber;
-                    break;
-                case '=':
-                    result = currNumber;
-                    break;
-            }
+let calculate = ops => {
+    let currNumber = screen.number;
+    if (isInitialAction) {
+        result = currNumber;
+        isInitialAction = false;
+    } else {
+        switch (prevOperation) {
+            case Operations.ADDITION:
+                result = result + currNumber;
+                break;
+            case Operations.SUBSTRACTION:
+                result = result - currNumber;
+                break;
+            case Operations.MULTIPLICATION:
+                result = result * currNumber;
+                break;
+            case Operations.DIVISION:
+                result = result / currNumber;
+                break;
+            case Operations.EQUALLS:
+                result = currNumber;
+                break;
         }
-        if (precedenceOn) {
-            let currOperation = this.innerHTML;
-            screen.number = currNumber;
-            precedence.addNumber(currNumber);
-            if (currOperation !== '=') {
-                precedence.addOperation(currOperation);
-            } else {
-                let outcome = precedence.calculateResult();
-                screen.number = outcome;
-            }
-        } else {
-            screen.number = result;
-        }
-        prevOperation = this.innerHTML;
-        screen.resetOnNextInput();
     }
+    screen.number = result;
+    prevOperation = ops;
 }
 
 let memoryKeyboard = new MemoryKeyboard();
