@@ -1,14 +1,15 @@
 "use strict";
 
-import { Screen } from './screen.js';
 import { Precedence } from './precedence.js';
 import { DigitKeyboard } from './DigitKeyboard/controller.js';
 import { DigitKeyboardEvents } from './DigitKeyboard/controller.js';
 import { OperationKeyboard } from './OperationKeyboard/controller.js';
 import { OperationKeyboardEvents } from './OperationKeyboard/controller.js';
 import { Operations } from './OperationKeyboard/controller.js';
-import { MemoryKeyboard } from './MemoryKeyboard/controller.js';
-import { MemoryButtons } from './MemoryKeyboard/controller.js';
+import { Screen } from './Screen/controller.js';
+
+let screen = new Screen();
+document.body.append(screen.view);
 
 let precedence = new Precedence();
 let precedenceOps = document.getElementById('precedenceOps');
@@ -30,7 +31,6 @@ operationKeyboard.bind(OperationKeyboardEvents.OPERATION_SELECTED, ops => {
     calculate(ops);
 });
 
-let screen = new Screen(document.getElementById('screen'));
 let prevOperation;
 let result = 0;
 let isInitialAction = true;
