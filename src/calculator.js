@@ -6,6 +6,8 @@ import { DigitKeyboardEvents } from './DigitKeyboard/controller.js';
 import { OperationKeyboard } from './OperationKeyboard/controller.js';
 import { OperationKeyboardEvents } from './OperationKeyboard/controller.js';
 import { Operations } from './OperationKeyboard/controller.js';
+import { MemoryKeyboard } from './MemoryKeyboard/controller.js';
+import { MemoryButtons } from './MemoryKeyboard/controller.js';
 import { Screen } from './Screen/controller.js';
 
 let screen = new Screen();
