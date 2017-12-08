@@ -1,13 +1,5 @@
 "use strict";
 
-import { Screen } from './screen.js';
-import { Precedence } from './precedence.js';
-import { DigitKeyboard } from './DigitKeyboard/controller.js';
-import { DigitKeyboardEvents } from './DigitKeyboard/controller.js';
-import { OperationKeyboard } from './OperationKeyboard/controller.js';
-import { OperationKeyboardEvents } from './OperationKeyboard/controller.js';
-import { Operations } from './OperationKeyboard/controller.js';
-
 import { MemoryKeyboard } from './MemoryKeyboard/controller.js';
 import { MemoryButtons } from './MemoryKeyboard/controller.js';
 
