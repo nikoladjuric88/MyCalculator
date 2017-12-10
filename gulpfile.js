@@ -2,15 +2,17 @@ const gulp = require('gulp');
 const browserify = require('gulp-browserify');
 const babel = require('gulp-babel');
 const babelify = require('babelify');
+const sass = require('gulp-sass');
 
 gulp.task('html', function() {
 	gulp.src('src/*.html')
 	    .pipe(gulp.dest('dist'));
 });
 
-gulp.task('css', function() {
-	gulp.src('src/*.css')
-	    .pipe(gulp.dest('dist'));
+gulp.task('sass', function() {
+	return gulp.src('src/style.scss')
+	.pipe(sass({ sourceComments: 'map' }))
+	.pipe(gulp.dest('dist'))
 });
 
 gulp.task('js', function() {
@@ -25,8 +27,8 @@ gulp.task('js', function() {
 
 gulp.task('watch', function() {
 	gulp.watch('src/**/*.html', ['html']);
-	gulp.watch('src/**/*.css', ['css']);
+	gulp.watch('src/style.scss', ['sass']);
 	gulp.watch('src/**/*.js', ['js']);
 });
 
-gulp.task('default', ['html', 'css', 'js', 'watch']);
+gulp.task('default', ['html', 'js', 'watch', 'sass']);

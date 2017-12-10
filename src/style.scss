@@ -1,0 +1,12 @@
+#calculatorBody {
+    width: 175px;
+    height: 197px;
+    background: linear-gradient(#7F8C8D, #CACFD2);
+    border: 1px solid #CACFD2;
+    border-radius: 0.5em;
+}
+
+@import "./DigitKeyboard/digitStyle";
+@import "./MemoryKeyboard/memoryStyle";
+@import "./OperationKeyboard/operationStyle";
+@import "./Screen/screenStyle";
