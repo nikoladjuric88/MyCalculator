@@ -1,6 +1,5 @@
 "use strict";
 
-import { Precedence } from './precedence.js';
 import { DigitKeyboard } from './DigitKeyboard/controller.js';
 import { DigitKeyboardEvents } from './DigitKeyboard/controller.js';
 import { OperationKeyboard } from './OperationKeyboard/controller.js';
@@ -11,22 +10,14 @@ import { MemoryButtons } from './MemoryKeyboard/controller.js';
 import { Screen } from './Screen/controller.js';
 
 let screen = new Screen();
-document.body.append(screen.view);
-
-let precedence = new Precedence();
-let precedenceOps = document.getElementById('precedenceOps');
-let precedenceOn = false;
-precedenceOps.onclick = function() {
-    document.getElementById('precedenceOps').style.backgroundColor = '#848484';
-    precedenceOn = true;
-}
+document.getElementById("calculatorBody").append(screen.view);
 
 let digitKeyboard = new DigitKeyboard();
-document.body.append(digitKeyboard.view);
+document.getElementById("calculatorBody").append(digitKeyboard.view);
 digitKeyboard.bind(DigitKeyboardEvents.KEY_PRESSED, digit => { screen.addDigit(digit); });
 
 let operationKeyboard = new OperationKeyboard();
-document.body.append(operationKeyboard.view);
+document.getElementById("calculatorBody").append(operationKeyboard.view);
 
 operationKeyboard.bind(OperationKeyboardEvents.OPERATION_SELECTED, ops => {
     screen.resetOnNextInput();
@@ -66,7 +57,7 @@ let calculate = ops => {
 }
 
 let memoryKeyboard = new MemoryKeyboard();
-document.body.append(memoryKeyboard.view);
+document.getElementById("calculatorBody").append(memoryKeyboard.view);
 memoryKeyboard.bind(MemoryButtons.PLUS, () => { memoryKeyboard.memoryPlus(screen.number) });
 memoryKeyboard.bind(MemoryButtons.MINUS, () => { memoryKeyboard.memoryMinus(screen.number) });
 memoryKeyboard.bind(MemoryButtons.RECALL, () => { screen.number = memoryKeyboard.memoryRecall() });
